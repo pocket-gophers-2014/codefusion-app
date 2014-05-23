@@ -31,7 +31,7 @@ App.ClassroomRoute = Ember.Route.extend({
 
 
 App.ClassroomHolder = Ember.ArrayController.create({
-  // content: []
+  content: []
 })
 
 App.ClassRoom = Ember.Object.extend({
@@ -44,13 +44,13 @@ App.ClassRoom = Ember.Object.extend({
 
 
 
-// App.ClassroomController = Ember.Controller.extend({
-//   queryParams: ['classroom'],
-//   filteredRooms: function() {
-//     // debugger
-//     console.log('refiltering')
-//     console.log(this.get('classroom'))
-//     // console.log(App.ClassroomHolder.filterBy('page','Classroom'))
-//     return App.ClassroomHolder.filterBy('page','/classrooms/:classroom_id')
-//   }.property('model.@each')
-// })
+App.ClassroomController = Ember.Controller.extend({
+  filteredRooms: function() {
+    // this.get('classroom')
+    // console.log("filtering")
+    console.log(window.location.hash.slice(13,99))
+    // console.log(App.ClassroomHolder)
+    // console.log(App.ClassroomHolder.content.filterBy('classroom_id',window.location.hash.slice(13,99)))
+    return App.ClassroomHolder.content.filterBy('classroom_id',window.location.hash.slice(13,99))
+  }.property('model.@each')
+})
