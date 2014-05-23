@@ -32,24 +32,23 @@ App.ClassroomHolder = Ember.ArrayController.create({
 })
 
 App.ClassRoom = Ember.Object.extend({
+  classroom_id: "",
+  content: ""
   // classroomObserver: function() {
     // console.log("observer notified")
   // }.observes('name').on('init')
 })
 
-var fb = new Firebase("https://radiant-fire-3325.firebaseio.com/");
-fb.on("value", function(data) {
-  formattedData = data.val() ? data.val().name : "";
-  newRoom = App.ClassRoom.create({classroom_id: data.val().classroom_id, name: data.val().name })
-  console.log(newRoom)
-  App.ClassroomHolder.pushObject(newRoom)
-  // console.log(App.ClassroomHolder.content)
+var classroomList = new Firebase("https://radiant-fire-3325.firebaseio.com/classroom_list");
+classroomList.on("value", function(data) {
+  App.ClassroomHolder.content = []
+  data.forEach(function(classroom) {
+    newRoom = App.ClassRoom.create(classroom.val())
+    App.ClassroomHolder.pushObject(newRoom)
+  })
 })
 
-// fb.set({ classroom_id: "2", name: "pants" })
 
-var roomOne = App.ClassRoom.create({
-  classroom_id: "1",
-  name: "less fun"
-})
-App.ClassroomHolder.pushObject(roomOne)
+// method for adding new classroom
+// newClassroom = classroomList.push({ classroom_id: "lkoxrks", content: "def other method  test end" })
+
