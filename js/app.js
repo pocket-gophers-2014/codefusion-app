@@ -25,8 +25,8 @@ App.ClassroomRoute = Ember.Route.extend({
 
 App.ApplicationView = Ember.View.extend({
   didInsertElement: function() {
-    // From http://highlightjs.org/usage/ see Custom Initialization
-    this.$('pre').each(function(i, e) {prettyPrint()});
+    this.$('pre').each(function() {prettyPrint()});
+    // this.$('pre.prettyPrint').style('width')
   }
 });
 
