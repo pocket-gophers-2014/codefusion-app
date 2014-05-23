@@ -5,6 +5,9 @@
   <title>Ember Starter Kit</title>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
+  <!-- Don't forget to include Ember and its dependencies -->
+  <script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
+
 </head>
 <body>
   <script type="text/x-handlebars">
@@ -21,7 +24,7 @@
     </ul>
   </script>
 
-  <script type="text/x-handlebars" id="classrooms">
+  <script type="text/x-handlebars" data-template-name="classrooms">
     <ul>
     {{#each}}
       <li>{{name}}</li>
@@ -31,8 +34,11 @@
 
   <script type="text/x-handlebars" id="classroom">
     <h1>Test header</h1>
-    {{name}}
+    {{#each}}
+      <li>{{name}}</li>
+    {{/each}}
   </script>
+
 
   <script src="js/libs/jquery-1.10.2.js"></script>
   <script src="js/libs/handlebars-1.1.2.js"></script>
