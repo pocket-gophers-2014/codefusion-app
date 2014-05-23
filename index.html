@@ -5,17 +5,22 @@
   <title>Ember Starter Kit</title>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/monokai.css">
+  <link rel="stylesheet" href="css/classroom.css">
   <!-- <link rel="stylesheet" href="sass/style.scss"> -->
-  <!-- Don't forget to include Ember and its dependencies -->
   <script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
 
 </head>
 <body>
   <script type="text/x-handlebars">
   <header>
-    {{#link-to 'index' }}
-    <h1>Fuzion</h1>
-    {{/link-to}}
+  <h1>{{#link-to 'index' }}Fuzion{{/link-to}}</h1>
+  <nav class="main">
+  <ul>
+    <li class="navigation">{{#link-to 'index' }}Home{{/link-to}}</li>
+    <li class="navigation">{{#link-to 'classrooms' }}Classrooms{{/link-to}}</li>
+    </ul>
+  </nav>
   </header>
 
   {{outlet}}
@@ -41,17 +46,48 @@
   </ul>
   </script>
 
-  <script type="text/x-handlebars" id="classroom">
-  <h2>Single Classroom:</h2>
-  {{#each}}
-  <hi>{{name}}</hi>
-  {{/each}}
+  <script type="text/x-handlebars" data-template-name="classroom">
+    {{#each}}
+      <h2>Classroom: {{name}}</h2>
+      <h4>{{name}}</h4>
+      <section class="classroom-text">
+        {{ partial 'code-view' }}
+        {{ partial 'note-view' }}
+      <section>
+    {{/each}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="_code-view">
+    <article class="code-view text-area file">
+        <table class="code-table">
+          <tbody>
+            <tr>
+              <td class="line-numbers"><pre class="prettyprint">1<br>2<br>3<br>4<br>5</pre></td>
+              <td class="code"><pre class="prettyprint">{{name}}</pre></td>
+            </tr>
+          </tbody>
+        </table>
+    </article>
+  </script>
+
+    <script type="text/x-handlebars" data-template-name="_note-view">
+    <article class="note-view text-area file">
+        <table class="note-table">
+          <tbody>
+            <tr>
+              <td class="line-numbers"><pre class="prettyprint">1<br>2<br>3<br>4<br>5</pre></td>
+              <td class="code"><pre class="prettyprint"><textarea class="notes" placeholder="Type your notes here..."></textarea></pre></td>
+            </tr>
+          </tbody>
+        </table>
+    </article>
   </script>
 
 
   <script src="js/libs/jquery-1.10.2.js"></script>
   <script src="js/libs/handlebars-1.1.2.js"></script>
   <script src="js/libs/ember-1.5.1.js"></script>
+  <script src="js/libs/prettify.js"></script>
   <script src="js/app.js"></script>
   <!-- to activate the test runner, add the "?test" query string parameter -->
   <script src="tests/runner.js"></script>
