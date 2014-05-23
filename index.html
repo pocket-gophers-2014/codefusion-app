@@ -34,7 +34,9 @@
 
   <script type="text/x-handlebars" id="classroom">
     <h1>Test header</h1>
-    name: {{name}}
+    {{#each}}
+      <li>{{name}}</li>
+    {{/each}}
   </script>
 
 
