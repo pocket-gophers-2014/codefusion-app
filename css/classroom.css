@@ -22,8 +22,8 @@
 pre.prettyprint {
   height: 100%;
   width: 100%;
-  max-width: 620px;
-  white-space: nowrap;
+  /*max-width: 620px;*/
+  /*white-space: nowrap;*/
   overflow: auto;
 }
 
