@@ -1,0 +1,32 @@
+{
+  "version": 3,
+  "file": "app.js",
+  "sources": [
+    "tmp/transpiled/app/adapters/application.js",
+    "tmp/transpiled/app/app.js",
+    "tmp/transpiled/app/components/pretty-color.js",
+    "tmp/transpiled/app/components/template-less.js",
+    "tmp/transpiled/app/helpers/reverse-word.js",
+    "tmp/transpiled/app/initializers/inject-store-into-component.js",
+    "tmp/transpiled/app/router.js",
+    "tmp/transpiled/app/routes/component-test.js",
+    "tmp/transpiled/app/routes/helper-test.js",
+    "tmp/transpiled/app/routes/index.js",
+    "tmp/transpiled/app/utils/ajax.js"
+  ],
+  "names": [],
+  "mappings": "AAAA;AACA;AACA;AACA;AACA;AACA,K;ACLA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,K;ACfA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,K;ACXA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,K;ACRA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,K;ACXA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,K;ACZA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,K;ACfA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,K;ACTA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,K;ACXA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,K;ACTA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,K",
+  "sourcesContent": [
+    "define(\"appkit/adapters/application\", \n  [\"exports\"],\n  function(__exports__) {\n    \"use strict\";\n    __exports__[\"default\"] = DS.FixtureAdapter.extend();\n  });",
+    "define(\"appkit/app\", \n  [\"ember/resolver\",\"ember/load-initializers\",\"exports\"],\n  function(__dependency1__, __dependency2__, __exports__) {\n    \"use strict\";\n    var Resolver = __dependency1__[\"default\"];\n    var loadInitializers = __dependency2__[\"default\"];\n\n    var App = Ember.Application.extend({\n      modulePrefix: 'appkit', // TODO: loaded via config\n      Resolver: Resolver\n    });\n\n    loadInitializers(App, 'appkit');\n\n    __exports__[\"default\"] = App;\n  });",
+    "define(\"appkit/components/pretty-color\", \n  [\"exports\"],\n  function(__exports__) {\n    \"use strict\";\n    __exports__[\"default\"] = Ember.Component.extend({\n      classNames: ['pretty-color'],\n      attributeBindings: ['style'],\n      style: function(){\n        return 'color: ' + this.get('name') + ';';\n      }.property('name')\n    });\n  });",
+    "define(\"appkit/components/template-less\", \n  [\"exports\"],\n  function(__exports__) {\n    \"use strict\";\n    __exports__[\"default\"] = Ember.Component.extend({\n      classNames: ['look-ma-no-template'],\n      tagName: ['span']\n    });\n  });",
+    "define(\"appkit/helpers/reverse-word\", \n  [\"exports\"],\n  function(__exports__) {\n    \"use strict\";\n    // Please note that Handlebars helpers will only be found automatically by the\n    // resolver if their name contains a dash (reverse-word, translate-text, etc.)\n    // For more details: http://stefanpenner.github.io/ember-app-kit/guides/using-modules.html\n\n    __exports__[\"default\"] = Ember.Handlebars.makeBoundHelper(function(word) {\n      return word.split('').reverse().join('');\n    });\n  });",
+    "define(\"appkit/initializers/inject-store-into-component\", \n  [\"exports\"],\n  function(__exports__) {\n    \"use strict\";\n    __exports__[\"default\"] = {\n      name: \"injectStoreIntoComponent\",\n      after: \"store\",\n\n      initialize: function(container, application) {\n        container.typeInjection('component', 'store', 'store:main');\n      }\n    };\n  });",
+    "define(\"appkit/router\", \n  [\"exports\"],\n  function(__exports__) {\n    \"use strict\";\n    var Router = Ember.Router.extend(); // ensure we don't share routes between all Router instances\n\n    Router.map(function() {\n      this.route('component-test');\n      this.route('helper-test');\n      // this.resource('posts', function() {\n      //   this.route('new');\n      // });\n    });\n\n    __exports__[\"default\"] = Router;\n  });",
+    "define(\"appkit/routes/component-test\", \n  [\"exports\"],\n  function(__exports__) {\n    \"use strict\";\n    __exports__[\"default\"] = Ember.Route.extend({\n      model: function() {\n        return ['purple', 'green', 'orange'];\n      }\n    });\n  });",
+    "define(\"appkit/routes/helper-test\", \n  [\"exports\"],\n  function(__exports__) {\n    \"use strict\";\n    __exports__[\"default\"] = Ember.Route.extend({\n      model: function() {\n        return {\n          name: \"rebmE\"\n        };\n      }\n    });\n  });",
+    "define(\"appkit/routes/index\", \n  [\"exports\"],\n  function(__exports__) {\n    \"use strict\";\n    __exports__[\"default\"] = Ember.Route.extend({\n      model: function() {\n        return ['red', 'yellow', 'blue'];\n      }\n    });\n  });",
+    "define(\"appkit/utils/ajax\", \n  [\"exports\"],\n  function(__exports__) {\n    \"use strict\";\n    /* global ic */\n    __exports__[\"default\"] = function ajax(){\n      return ic.ajax.apply(null, arguments);\n    }\n  });"
+  ]
+}
