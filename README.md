@@ -1,49 +1,36 @@
-# Ember App Kit [![Build Status](https://travis-ci.org/stefanpenner/ember-app-kit.png?branch=master)](https://travis-ci.org/stefanpenner/ember-app-kit)
+starter-kit
+===========
 
-Ember App Kit aims to be the foundation for ambitious web applications built with Ember. It will soon be replaced by an executable [ember-cli](https://github.com/stefanpenner/ember-cli) which dramatically improves buildtimes (via broccoli) and provides sane-upgrade paths, feel free to check that project out. We intend to provide a sensible upgrade path.
+A starter kit for Ember
 
-This project has been extracted out of several real world applications and is actively used. Currently it covers the basics fairly well, but much still needs to be done. As we learn and as more contributors join in it continues to evolve. If you encounter any bugs, clunky features or missing documentation, just submit an issue and we'll respond ASAP.
+Your Ember.js project is almost ready! Here's how to get started:
 
-At the very least, it helps setup your Ember.js applications directory structure.
+- Start writing your app in js/app.js.
 
-We welcome ideas and experiments.
+- Describe your application HTML in index.html.
 
-## Getting Started
+- During development, you can link to js/libs/ember-*.js to get the
+  unminified version of Ember.js.
 
-* [Project Documentation Site](http://stefanpenner.github.io/ember-app-kit/)
-* [Getting Started Guide](http://stefanpenner.github.io/ember-app-kit/guides/getting-started.html)
-* [ember-app-kit-todos](https://github.com/stefanpenner/ember-app-kit-todos) - the Emberjs [todos](http://emberjs.com/guides/getting-started/) using Ember App Kit 
-* [ember-app-kit-bloggr](https://github.com/pixelhandler/ember-app-kit-example-with-bloggr-client) - bloggr demo
-* *Safari Books Online Blog* - [Introduction to Ember App Kit](http://blog.safaribooksonline.com/2013/09/18/ember-app-kit/) for more experienced Ember developers by @mixonic
-* *Ember Sherpa* - [Introduction to Ember App Kit](http://embersherpa.com/articles/introduction-to-ember-app-kit/) for those who are new to the Grunt workflow by @taras 
+- Add CSS to css/style.css
 
+- Open index.html in your browser
 
-## Features
+Tests
+=====
 
-- Sane project structure
-- ES6 module transpiler support (easy, future-proof modules)
-- Module system-aware resolver (see [Referencing views](https://github.com/stefanpenner/ember-app-kit/wiki/Referencing-Views) and [Using Ember loaders](https://github.com/stefanpenner/ember-app-kit/wiki/Using-Ember-loaders))
-- Transparent project compilation & minification for easy deploys via [Grunt](http://gruntjs.com/)
-- Package management via [Bower](https://github.com/bower/bower)
-- Optional support for CoffeeScript, SASS, LESS or Stylus
-- Testing via QUnit, Ember Testing and Testem (with examples)
-- Linting via JSHint (including module syntax)
-- Catch-all `index.html` for easy reloading of pushState router apps
-- Generators via [Loom](https://github.com/cavneb/loom-generators-ember-appkit) (to generate routes, controllers, etc.)
+This starter kit comes with an integration test sample, written for QUnit runner. 
 
-## Future Goals
+You can run the tests by opening the `index.html?test` page in your browser.
 
-- Source maps for transpiled modules
-- Easier to install 3rd party packages
-- Faster, more intelligent builds
+The test is located in the `tests/tests.js` file. You can see how such an 
+integration test should be written, using QUnit assertions and ember-testing helpers.
 
-Think anything else is missing? Feel free to open an issue (or, even better, a PR)! Discussion and feedback is always appreciated.
+For more information about ember-testing package see [ember-testing](http://emberjs.com/guides/testing/integration/)
 
-## Special Thanks
+For more information about the QUnit testing framework, see [QUnit](http://qunitjs.com/)
 
-Some ideas in ember-app-kit originated in work by Yapp Labs (@yapplabs) with McGraw-Hill Education Labs (@mhelabs) on [yapplabs/glazier](https://github.com/yapplabs/glazier). Thanks to Yapp and MHE for supporting the Ember ecosystem!
+Contact
+====
 
-## License
-
-Copyright 2013 by Stefan Penner and Ember App Kit Contributors, and licensed under the MIT License. See included
-[LICENSE](/stefanpenner/ember-app-kit/blob/master/LICENSE) file for details.
+www.emberjs.com
