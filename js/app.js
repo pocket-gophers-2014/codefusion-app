@@ -1,15 +1,19 @@
-App = Ember.Application.create();
+App = Ember.Application.create({
+  // FireBaseController: function() {}
+});
+
+
+App.IndexRoute = Ember.Route.extend({
+  model: function() {
+    return ['red', 'yellow', 'blue'];
+  }
+});
 
 App.Router.map(function() {
   this.resource('classrooms');
   this.resource('classroom', { path: '/classrooms/:classroom_id' });
 });
 
-App.IndexRoute = Ember.Route.extend({
-  model: function() {
-    // return ['red', 'yellow', 'blue'];
-  }
-});
 
 App.ClassroomsRoute = Ember.Route.extend({
   model: function() {
@@ -26,7 +30,6 @@ App.ClassroomRoute = Ember.Route.extend({
 //////////////////////////////////////////////////////////////////////////////////////////
 
 
-
 App.ClassroomHolder = Ember.ArrayController.create({
   // content: []
 })
@@ -39,16 +42,15 @@ App.ClassRoom = Ember.Object.extend({
   // }.observes('name').on('init')
 })
 
-var classroomList = new Firebase("https://radiant-fire-3325.firebaseio.com/classroom_list");
-classroomList.on("value", function(data) {
-  App.ClassroomHolder.content = []
-  data.forEach(function(classroom) {
-    newRoom = App.ClassRoom.create(classroom.val())
-    App.ClassroomHolder.pushObject(newRoom)
-  })
-})
 
 
-// method for adding new classroom
-// newClassroom = classroomList.push({ classroom_id: "lkoxrks", content: "def other method  test end" })
-
+// App.ClassroomController = Ember.Controller.extend({
+//   queryParams: ['classroom'],
+//   filteredRooms: function() {
+//     // debugger
+//     console.log('refiltering')
+//     console.log(this.get('classroom'))
+//     // console.log(App.ClassroomHolder.filterBy('page','Classroom'))
+//     return App.ClassroomHolder.filterBy('page','/classrooms/:classroom_id')
+//   }.property('model.@each')
+// })
