@@ -2,11 +2,18 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Ember Starter Kit</title>
+  <title>Fuzion App</title>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
   <!-- Don't forget to include Ember and its dependencies -->
   <script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
+  <script src="js/libs/jquery-1.10.2.js"></script>
+  <script src="js/libs/handlebars-1.1.2.js"></script>
+  <script src="js/libs/ember-1.5.1.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/firebasecontroller.js"></script>
+  <!-- to activate the test runner, add the "?test" query string parameter -->
+  <script src="tests/runner.js"></script>
 
 </head>
 <body>
@@ -18,7 +25,7 @@
 
   <script type="text/x-handlebars" id="index">
     <ul>
-    {{#each item in model}}
+    {{#each item in   }}
       <li>{{item}}</li>
     {{/each}}
     </ul>
@@ -27,7 +34,10 @@
   <script type="text/x-handlebars" data-template-name="classrooms">
     <ul>
     {{#each}}
-      <li>{{name}}</li>
+      <li>classroom_id: {{classroom_id}}  </li>
+      <ul>
+        <li> content: {{content}} </li>
+      </ul>
     {{/each}}
     </ul>
   </script>
@@ -35,16 +45,12 @@
   <script type="text/x-handlebars" id="classroom">
     <h1>Test header</h1>
     {{#each}}
-      <li>{{name}}</li>
+    Classroom_id: {{classroom_id}}
+      <li>content: {{content}}</li>
     {{/each}}
   </script>
 
 
-  <script src="js/libs/jquery-1.10.2.js"></script>
-  <script src="js/libs/handlebars-1.1.2.js"></script>
-  <script src="js/libs/ember-1.5.1.js"></script>
-  <script src="js/app.js"></script>
-  <!-- to activate the test runner, add the "?test" query string parameter -->
-  <script src="tests/runner.js"></script>
+
 </body>
 </html>

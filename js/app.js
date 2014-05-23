@@ -1,55 +1,61 @@
-App = Ember.Application.create();
-
-App.Router.map(function() {
-  this.resource('classrooms');
-  this.resource('classroom', { path: '/classrooms/:classroom_id' });
-});
+App = Ember.Application.create({ });
 
 App.IndexRoute = Ember.Route.extend({
   model: function() {
-    // return ['red', 'yellow', 'blue'];
+    return ['red', 'yellow', 'blue'];
   }
 });
 
+App.Router.map(function() {
+  this.resource('classrooms', function(){
+    this.resource('classroom', {'path': '/:classroom_id'})
+  })
+  // this.resource('classrooms');
+  // this.resource('classroom', { path: '/classrooms/:classroom_id' });
+
+});
+
+
 App.ClassroomsRoute = Ember.Route.extend({
   model: function() {
+    newRequest = FireBaseController.multiRequest()
     return App.ClassroomHolder;
   }
 });
 
 App.ClassroomRoute = Ember.Route.extend({
   model: function(params) {
-    return App.ClassroomHolder//.findBy('classroom_id', params.classroom_id)
+    newRequest = FireBaseController.singleRequest(params.classroom_id)
+    return App.ClassroomHolder
   }
 });
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
 
-
 App.ClassroomHolder = Ember.ArrayController.create({
-  // content: []
+  content: [],
+  updateContent: function(data) {
+    this.set("content", [])
+    newRoom = App.ClassRoom.create(data.val())
+    this.pushObject(newRoom)
+  }
 })
 
 App.ClassRoom = Ember.Object.extend({
+  classroom_id: "",
+  content: ""
   // classroomObserver: function() {
     // console.log("observer notified")
   // }.observes('name').on('init')
 })
 
-var fb = new Firebase("https://radiant-fire-3325.firebaseio.com/");
-fb.on("value", function(data) {
-  formattedData = data.val() ? data.val().name : "";
-  newRoom = App.ClassRoom.create({classroom_id: data.val().classroom_id, name: data.val().name })
-  console.log(newRoom)
-  App.ClassroomHolder.pushObject(newRoom)
-  // console.log(App.ClassroomHolder.content)
-})
 
-// fb.set({ classroom_id: "2", name: "pants" })
 
-var roomOne = App.ClassRoom.create({
-  classroom_id: "1",
-  name: "less fun"
+App.ClassroomController = Ember.Controller.extend({
+  actions: {
+    updateData: function() {
+      console.log("updating data")
+    }
+  }
 })
-App.ClassroomHolder.pushObject(roomOne)
