@@ -1,7 +1,4 @@
-App = Ember.Application.create({
-  // FireBaseController: function() {}
-});
-
+App = Ember.Application.create({ });
 
 App.IndexRoute = Ember.Route.extend({
   model: function() {
@@ -10,20 +7,26 @@ App.IndexRoute = Ember.Route.extend({
 });
 
 App.Router.map(function() {
-  this.resource('classrooms');
-  this.resource('classroom', { path: '/classrooms/:classroom_id' });
+  this.resource('classrooms', function(){
+    this.resource('classroom', {'path': '/:classroom_id'})
+  })
+  // this.resource('classrooms');
+  // this.resource('classroom', { path: '/classrooms/:classroom_id' });
+
 });
 
 
 App.ClassroomsRoute = Ember.Route.extend({
   model: function() {
+    newRequest = FireBaseController.multiRequest()
     return App.ClassroomHolder;
   }
 });
 
 App.ClassroomRoute = Ember.Route.extend({
   model: function(params) {
-    return App.ClassroomHolder//.findBy('classroom_id', params.classroom_id)
+    newRequest = FireBaseController.singleRequest(params.classroom_id)
+    return App.ClassroomHolder
   }
 });
 
@@ -31,7 +34,12 @@ App.ClassroomRoute = Ember.Route.extend({
 
 
 App.ClassroomHolder = Ember.ArrayController.create({
-  content: []
+  content: [],
+  updateContent: function(data) {
+    this.set("content", [])
+    newRoom = App.ClassRoom.create(data.val())
+    this.pushObject(newRoom)
+  }
 })
 
 App.ClassRoom = Ember.Object.extend({
@@ -45,12 +53,9 @@ App.ClassRoom = Ember.Object.extend({
 
 
 App.ClassroomController = Ember.Controller.extend({
-  filteredRooms: function() {
-    // this.get('classroom')
-    // console.log("filtering")
-    console.log(window.location.hash.slice(13,99))
-    // console.log(App.ClassroomHolder)
-    // console.log(App.ClassroomHolder.content.filterBy('classroom_id',window.location.hash.slice(13,99)))
-    return App.ClassroomHolder.content.filterBy('classroom_id',window.location.hash.slice(13,99))
-  }.property('model.@each')
+  actions: {
+    updateData: function() {
+      console.log("updating data")
+    }
+  }
 })
