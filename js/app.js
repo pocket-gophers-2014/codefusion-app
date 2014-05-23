@@ -2,7 +2,7 @@ App = Ember.Application.create();
 
 App.Router.map(function() {
   this.resource('classrooms');
-  this.resource('classroom', { path: '/classrooms/:classroom_id' });
+  this.resource('classroom', { path: '/classroom/:classroom_id' });
 });
 
 App.IndexRoute = Ember.Route.extend({

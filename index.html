@@ -5,38 +5,47 @@
   <title>Ember Starter Kit</title>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
+  <!-- <link rel="stylesheet" href="sass/style.scss"> -->
   <!-- Don't forget to include Ember and its dependencies -->
   <script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
 
 </head>
 <body>
   <script type="text/x-handlebars">
-    <h2>Welcome to Ember.js</h2>
+  <header>
+    {{#link-to 'index' }}
+    <h1>Fuzion</h1>
+    {{/link-to}}
+  </header>
 
-    {{outlet}}
+  {{outlet}}
+
   </script>
 
   <script type="text/x-handlebars" id="index">
-    <ul>
-    {{#each item in model}}
-      <li>{{item}}</li>
-    {{/each}}
-    </ul>
+  {{#link-to "classrooms"}}
+  <h4>See All Classrooms</h4>
+  {{/link-to}}
+
+  <h2>About: </h2>
+
+
   </script>
 
   <script type="text/x-handlebars" data-template-name="classrooms">
-    <ul>
-    {{#each}}
-      <li>{{name}}</li>
-    {{/each}}
-    </ul>
+  <h2>Current Classrooms:</h2>
+  <ul>
+  {{#each}}
+  <li>{{#link-to 'classroom' classroom_id }}{{name}}{{/link-to}}</li>
+  {{/each}}
+  </ul>
   </script>
 
   <script type="text/x-handlebars" id="classroom">
-    <h1>Test header</h1>
-    {{#each}}
-      <li>{{name}}</li>
-    {{/each}}
+  <h2>Single Classroom:</h2>
+  {{#each}}
+  <hi>{{name}}</hi>
+  {{/each}}
   </script>
 
 
