@@ -24,7 +24,7 @@
     </ul>
   </script>
 
-  <script type="text/x-handlebars" id="classrooms">
+  <script type="text/x-handlebars" data-template-name="classrooms">
     <ul>
     {{#each}}
       <li>{{name}}</li>
@@ -34,8 +34,9 @@
 
   <script type="text/x-handlebars" id="classroom">
     <h1>Test header</h1>
-    name: {{things}}
+    name: {{name}}
   </script>
+
 
   <script src="js/libs/jquery-1.10.2.js"></script>
   <script src="js/libs/handlebars-1.1.2.js"></script>
