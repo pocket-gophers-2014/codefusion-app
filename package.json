@@ -1,0 +1,9 @@
+{
+  "name" : "fuzion-app",
+  "version" : "0.0.1",
+  "description" : "One way text editor sharing",
+  "main" : "server.js",
+  "dependencies" : {
+    "express" : "~3.4.4"
+  }
+}
