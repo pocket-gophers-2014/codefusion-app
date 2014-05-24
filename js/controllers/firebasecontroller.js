@@ -1,21 +1,21 @@
-
 FireBaseController = {
+
+  // NEED TO HIDE IN ENV OR SET PASSWORD
+  dataBaseLocation: "https://radiant-fire-3325.firebaseio.com/classrooms/",
   multiRequest: function(params) {
-    var response =  new Firebase("https://radiant-fire-3325.firebaseio.com/classrooms")
-    response.on("value", function(data) {
-      App.ClassroomHolder.set("content", [])
+    var response =  new Firebase(this.dataBaseLocation)
+    response.once("value", function(data) {
       data.forEach(function(classroom) {
-        newRoom = App.ClassRoom.create(classroom.val())
+        newRoom = App.Classroom.create(classroom.val())
         App.ClassroomHolder.pushObject(newRoom)
       })
     })
   },
   singleRequest: function(params) {
-    FBController = this
-    new Firebase("https://radiant-fire-3325.firebaseio.com/classrooms")
+    new Firebase(this.dataBaseLocation)
     .once("value", function(data) {
       data.forEach(function(classroom) {
-        FBController.checkRoomMatch(classroom, params)
+        FireBaseController.checkRoomMatch(classroom, params)
       })
     })
   },
@@ -25,10 +25,11 @@ FireBaseController = {
     }
   },
   initializeRoomWatch: function(fireBaseRoom) {
-    var response =  new Firebase("https://radiant-fire-3325.firebaseio.com/classrooms/" + fireBaseRoom)
+    var response =  new Firebase(this.dataBaseLocation + fireBaseRoom)
     response.on("value", function(data) {
-      App.ClassroomHolder.set("content", [])
-      App.ClassroomHolder.updateContent(data)
+      console.log('response received')
+      App.CurrentClassroom.set('classroom_code',data.val().classroom_code)
+      App.CurrentClassroom.set('file_content',data.val().file_content)
     })
   }
 }
