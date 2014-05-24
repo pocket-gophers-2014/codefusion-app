@@ -1,13 +1,7 @@
 
 FireBaseController = {
-  singleRequest: function(params) {
-    var response =  new Firebase("https://radiant-fire-3325.firebaseio.com/classroom_list/" + params)
-    response.on("value", function(data) {
-      App.ClassroomHolder.updateContent(data)
-    })
-  },
-  multiRequest: function() {
-    response = new Firebase("https://radiant-fire-3325.firebaseio.com/classroom_list");
+  multiRequest: function(params) {
+    var response =  new Firebase("https://radiant-fire-3325.firebaseio.com/classroom_list")
     response.on("value", function(data) {
       App.ClassroomHolder.set("content", [])
       data.forEach(function(classroom) {
@@ -15,7 +9,27 @@ FireBaseController = {
         App.ClassroomHolder.pushObject(newRoom)
       })
     })
-
+  },
+  singleRequest: function(params) {
+    FBController = this
+    App.ClassroomHolder.set("content", [])
+    new Firebase("https://radiant-fire-3325.firebaseio.com/classroom_list")
+    .once("value", function(data) {
+      data.forEach(function(classroom) {
+        FBController.checkRoomMatch(classroom, params)
+      })
+    })
+  },
+  checkRoomMatch: function(classroom,params) {
+    if (classroom.val().classroom_id === params) {
+      this.initializeRoomWatch(classroom.hc.path.m[1])
+    }
+  },
+  initializeRoomWatch: function(fireBaseRoom) {
+    var response =  new Firebase("https://radiant-fire-3325.firebaseio.com/classroom_list/" + fireBaseRoom)
+    response.on("value", function(data) {
+      App.ClassroomHolder.updateContent(data)
+    })
   }
 }
 
