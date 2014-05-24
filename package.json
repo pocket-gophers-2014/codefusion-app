@@ -27,5 +27,5 @@
     "grunt-ember-templates": "~0.4.17",
     "grunt-contrib-testem": "~0.5.14",
     "grunt-contrib-less": "~0.8.2"
-  },
+  }
 }
