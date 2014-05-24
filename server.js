@@ -1,5 +1,6 @@
 var express = require('express');
-var logfmt = require("logfmt");
+var logfmt = require("logfmt");s
+var port = process.env.PORT || 8080;
 var app = express();
 
 app.configure(function() {
@@ -12,5 +13,5 @@ app.get('*', function() {
   res.sendfile('index.html')
 })
 
-app.listen(8080)
+app.listen(port)
 console.log("---------- App listening on port 8080 ----------")
