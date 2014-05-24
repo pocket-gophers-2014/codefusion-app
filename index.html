@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/monokai.css">
   <link rel="stylesheet" href="css/classroom.css">
+  <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700' rel='stylesheet' type='text/css'>
   <script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
   <script src="js/libs/jquery-1.10.2.js"></script>
   <script src="js/libs/handlebars-1.1.2.js"></script>
@@ -20,12 +21,7 @@
   <script type="text/x-handlebars">
   <header>
   <h1>{{#link-to 'index' }}Fuzion{{/link-to}}</h1>
-  <nav class="main">
-  <ul>
-    <li class="navigation">{{#link-to 'index' }}Home{{/link-to}}</li>
-    <li class="navigation">{{#link-to 'classrooms' }}Classrooms{{/link-to}}</li>
-    </ul>
-  </nav>
+  <hr>
   </header>
 
   {{outlet}}
@@ -33,11 +29,19 @@
   </script>
 
   <script type="text/x-handlebars" id="index">
-    <ul>
-    {{#each item in   }}
-      <li>{{item}}</li>
-    {{/each}}
-    </ul>
+    <section class="content">
+      <article class="column left">
+        <article id="classroom-list">
+        <p>Currently trending classrooms...</p>
+          <ul>
+          </ul>
+        </article>
+      </article>
+
+      <article class="column right">
+        <article id="about"><p><strong>Fuzion</strong> is an app...</p></article>
+      </article>
+    </section>
   </script>
 
   <script type="text/x-handlebars" data-template-name="classrooms">

@@ -1,24 +1,45 @@
 /* Put your CSS here */
 .ember-application {
   margin: 2%;
+  background: #f2f3f7;
+  font-family: 'Source Code Pro';
 }
 
 header {
   text-align: center;
 }
 
-header > * {
-  display: inline-block;
-}
-
 header a {
-  font-weight: bold;
+  font-weight: normal;
   color: #000;
   text-decoration: none;
 }
 
 header h1 {
-  font-size: 3em;
+  font-size: 4em;
+  margin-bottom: 0;
+}
+
+.content {
+  text-align: center;
+}
+
+.column {
+  display: inline-block;
+  border: 1px black solid;
+  margin: 0 5%;
+}
+
+.column.left {
+  width: 25%;
+}
+
+.column.right {
+  width: 50%;
+}
+
+/*header > * {
+  display: inline-block;
 }
 
 nav.main ul {
@@ -41,4 +62,4 @@ li.navigation:before {
 
 li.navigation:first-child:before {
   content: none;
-}
+}*/
