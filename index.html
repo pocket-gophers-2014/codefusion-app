@@ -64,14 +64,12 @@
   </script>
 
   <script type="text/x-handlebars" data-template-name="classrooms">
-    {{#each}}
       <h2>Classroom_id: {{classroom_id}}</h2>
       <h4>{{content}}</h4>
       <section class="classroom-text">
         {{ partial 'code-view' }}
         {{ partial 'note-view' }}
       <section>
-    {{/each}}
   </script>
 
   <script type="text/x-handlebars" data-template-name="_code-view">
