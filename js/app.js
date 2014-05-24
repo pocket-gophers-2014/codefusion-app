@@ -19,14 +19,13 @@ App.Router.map(function() {
 
 App.ClassroomsRoute = Ember.Route.extend({
   model: function() {
-    newRequest = FireBaseController.multiRequest()
     return App.ClassroomHolder;
   }
 });
 
 App.ClassroomRoute = Ember.Route.extend({
   model: function(params) {
-    newRequest = FireBaseController.singleRequest(params.classroom_id)
+    newRequest = FireBaseController.singleRequest(params["classroom_id"])
     return App.ClassroomHolder
   }
 });
@@ -49,11 +48,8 @@ App.ClassroomHolder = Ember.ArrayController.create({
 })
 
 App.ClassRoom = Ember.Object.extend({
-  classroom_id: "",
-  content: ""
-  // classroomObserver: function() {
-    // console.log("observer notified")
-  // }.observes('name').on('init')
+  // classroom_id: "",
+  // content: ""i
 })
 
 
