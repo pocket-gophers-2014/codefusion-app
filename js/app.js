@@ -11,11 +11,7 @@ App.Router.map(function() {
   this.resource('classrooms', function(){
     this.resource('classroom', {'path': '/:classroom_id'})
   })
-  // this.resource('classrooms');
-  // this.resource('classroom', { path: '/classrooms/:classroom_id' });
-
 });
-
 
 App.ClassroomsRoute = Ember.Route.extend({
   model: function() {
@@ -30,13 +26,16 @@ App.ClassroomRoute = Ember.Route.extend({
   }
 });
 
-App.ApplicationView = Ember.View.extend({
+Ember.View.reopen({
   didInsertElement: function() {
-    this.$('pre').each(function() {prettyPrint()});
-    // this.$('pre.prettyPrint').style('width')
+    // this._super()
+    Ember.run.schedule('afterRender', this, this.udpateCodePrettify);
+  },
+
+  udpateCodePrettify: function() {
+    this.$('pre').each(function() { prettyPrint() });
   }
 });
-
 
 App.ClassroomHolder = Ember.ArrayController.create({
   content: [],
@@ -51,8 +50,6 @@ App.ClassRoom = Ember.Object.extend({
   // classroom_id: "",
   // content: ""i
 })
-
-
 
 App.ClassroomController = Ember.Controller.extend({
   actions: {

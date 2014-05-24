@@ -7,10 +7,12 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/monokai.css">
   <link rel="stylesheet" href="css/classroom.css">
+  <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700' rel='stylesheet' type='text/css'>
   <script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
   <script src="js/libs/jquery-1.10.2.js"></script>
   <script src="js/libs/handlebars-1.1.2.js"></script>
   <script src="js/libs/ember-1.5.1.js"></script>
+  <script src="js/libs/prettify.js"></script>
   <script src="js/app.js"></script>
   <script src="js/firebasecontroller.js"></script>
   <script src="tests/runner.js"></script>
@@ -20,12 +22,7 @@
   <script type="text/x-handlebars">
   <header>
   <h1>{{#link-to 'index' }}Fuzion{{/link-to}}</h1>
-  <nav class="main">
-  <ul>
-    <li class="navigation">{{#link-to 'index' }}Home{{/link-to}}</li>
-    <li class="navigation">{{#link-to 'classrooms' }}Classrooms{{/link-to}}</li>
-    </ul>
-  </nav>
+  <hr>
   </header>
 
   {{outlet}}
@@ -33,9 +30,32 @@
   </script>
 
   <script type="text/x-handlebars" id="index">
+    <section class="content">
+      <article class="column left">
+        <article id="classroom-list">
+        <p>Currently trending classrooms...</p>
+          <ul>
+            {{#each}}
+              <li>{{#link-to 'classroom' classroom_id }} {{classroom_id}} {{/link-to}}</li>
+              <ul>
+                <li> content: {{content}} </li>
+              </ul>
+            {{/each}}
+          </ul>
+        </article>
+      </article>
+
+      <article class="column right">
+        <article id="about"><p><strong>Fuzion</strong> is an app...</p></article>
+      </article>
+    </section>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="classroom">
     <ul>
     {{#each}}
       <li>classroom_id: {{classroom_id}}</li>
+      test
       <ul>
         <li> content: {{content}} </li>
       </ul>
@@ -44,25 +64,12 @@
   </script>
 
   <script type="text/x-handlebars" data-template-name="classrooms">
-    <ul>
-    {{#each}}
-      <li>classroom_id: {{classroom_id}}</li>
-      <ul>
-        <li> content: {{content}} </li>
-      </ul>
-    {{/each}}
-    </ul>
-  </script>
-
-  <script type="text/x-handlebars" data-template-name="classroom">
-    {{#each}}
       <h2>Classroom_id: {{classroom_id}}</h2>
       <h4>{{content}}</h4>
       <section class="classroom-text">
         {{ partial 'code-view' }}
         {{ partial 'note-view' }}
       <section>
-    {{/each}}
   </script>
 
   <script type="text/x-handlebars" data-template-name="_code-view">
@@ -70,40 +77,7 @@
         <table class="code-table">
           <tbody>
             <tr>
-              <td class="code"><pre class="prettyprint linenums">Here is some code
-here is some more
-more code
-def some function (pants)
-  some other stuff here
-  some more
-end
-asdf
-asdf
-asdf
-asdf
-this is a really really long line. this is a really really long line. this is a really really long line. this is a really really long line. this is a really really long line. this is a really really long line. this is a really really long line. this is a really really long line. this is a really really long line. this is a really really long line. this is a really really long line. this is a really really long line. this is a really really long line. this is a really really long line.
-asdf
-asdf
-asdf
-asdf
-asdf
-here is some more
-more code
-def some function (pants)
-  some other stuff here
-  some more
-end
-asdf
-asdf
-asdf
-asdf
-asdf
-asdf
-asdf
-asdf
-asdf
-asdf
-</pre></td>
+              <td class="code"><pre class="prettyprint linenums">{{content}}</pre></td>
             </tr>
           </tbody>
         </table>

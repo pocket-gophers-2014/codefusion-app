@@ -12,7 +12,6 @@ FireBaseController = {
   },
   singleRequest: function(params) {
     FBController = this
-    App.ClassroomHolder.set("content", [])
     new Firebase("https://radiant-fire-3325.firebaseio.com/classroom_list")
     .once("value", function(data) {
       data.forEach(function(classroom) {
@@ -28,6 +27,7 @@ FireBaseController = {
   initializeRoomWatch: function(fireBaseRoom) {
     var response =  new Firebase("https://radiant-fire-3325.firebaseio.com/classroom_list/" + fireBaseRoom)
     response.on("value", function(data) {
+      App.ClassroomHolder.set("content", [])
       App.ClassroomHolder.updateContent(data)
     })
   }
