@@ -18,12 +18,12 @@
 
   <script src="js/app.js"></script>
   <script src="js/routes.js"></script>
+  <script src="js/views/classroomprettify.js"></script>
   <script src="js/controllers/classroomcontroller.js"></script>
   <script src="js/controllers/classroomholdercontroller.js"></script>
   <script src="js/controllers/firebasecontroller.js"></script>
   <script src="js/models/classroom.js"></script>
   <script src="js/models/classroomholder.js"></script>
-  <script src="js/views/classroomprettify.js"></script>
 
 </head>
 <body>
@@ -65,8 +65,8 @@
       <h2>classroom_code: {{classroom_code}}</h2>
       <section class="classroom-text">
         {{ partial 'code-view' }}
-      </section>
         {{ partial 'note-view' }}
+      </section>
   </script>
 
   <script type="text/x-handlebars" data-template-name="_code-view">
@@ -81,7 +81,7 @@
     </article>
   </script>
 
-    <script type="text/x-handlebars" data-template-name="_note-view" >
+  <script type="text/x-handlebars" data-template-name="_note-view" >
     <article class="note-view text-area file" >
         <table class="note-table">
           <tbody>
@@ -92,5 +92,6 @@
         </table>
     </article>
   </script>
+
 </body>
 </html>
