@@ -33,6 +33,7 @@ Ember.View.reopen({
   },
 
   udpateCodePrettify: function() {
+    console.log("pretty!")
     this.$('pre').each(function() { prettyPrint() });
   }
 });

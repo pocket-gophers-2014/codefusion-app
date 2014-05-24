@@ -1,7 +1,7 @@
 
 FireBaseController = {
   multiRequest: function(params) {
-    var response =  new Firebase("https://radiant-fire-3325.firebaseio.com/classroom_list")
+    var response =  new Firebase("https://radiant-fire-3325.firebaseio.com/classrooms")
     response.on("value", function(data) {
       App.ClassroomHolder.set("content", [])
       data.forEach(function(classroom) {
@@ -12,7 +12,7 @@ FireBaseController = {
   },
   singleRequest: function(params) {
     FBController = this
-    new Firebase("https://radiant-fire-3325.firebaseio.com/classroom_list")
+    new Firebase("https://radiant-fire-3325.firebaseio.com/classrooms")
     .once("value", function(data) {
       data.forEach(function(classroom) {
         FBController.checkRoomMatch(classroom, params)
@@ -20,12 +20,12 @@ FireBaseController = {
     })
   },
   checkRoomMatch: function(classroom,params) {
-    if (classroom.val().classroom_id === params) {
+    if (classroom.val().classroom_code === params) {
       this.initializeRoomWatch(classroom.hc.path.m[1])
     }
   },
   initializeRoomWatch: function(fireBaseRoom) {
-    var response =  new Firebase("https://radiant-fire-3325.firebaseio.com/classroom_list/" + fireBaseRoom)
+    var response =  new Firebase("https://radiant-fire-3325.firebaseio.com/classrooms/" + fireBaseRoom)
     response.on("value", function(data) {
       App.ClassroomHolder.set("content", [])
       App.ClassroomHolder.updateContent(data)
@@ -34,4 +34,4 @@ FireBaseController = {
 }
 
 // // method for adding new classroom
-// // newClassroom = FireBaseRoomListener.push({ classroom_id: "ckwochs,", content: "def test 3 method end" })
+// newClassroom = FireBaseRoomListener.push({ classroom_code: "ckwochs,", file_content: "def test 3 method end", file_name: "test_99.rb" })
