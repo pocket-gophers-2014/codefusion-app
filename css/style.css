@@ -21,13 +21,18 @@ header h1 {
 }
 
 .content {
-  text-align: center;
+  /*text-align: center;*/
 }
 
 .column {
   display: inline-block;
   border: 1px black solid;
   margin: 0 5%;
+  height: 100%;
+}
+
+.column article {
+  vertical-align: top;
 }
 
 .column.left {

@@ -1,36 +1,40 @@
 App = Ember.Application.create({ });
 
+App.IndexRoute = Ember.Route.extend({
+  model: function() {
+    newRequest = FireBaseController.multiRequest()
+    return App.ClassroomHolder
+  }
+});
+
 App.Router.map(function() {
   this.resource('classrooms', function(){
     this.resource('classroom', {'path': '/:classroom_id'})
   })
-  // this.resource('classrooms');
-  // this.resource('classroom', { path: '/classrooms/:classroom_id' });
-
 });
-
 
 App.ClassroomsRoute = Ember.Route.extend({
   model: function() {
-    newRequest = FireBaseController.multiRequest()
     return App.ClassroomHolder;
   }
 });
 
 App.ClassroomRoute = Ember.Route.extend({
   model: function(params) {
-    newRequest = FireBaseController.singleRequest(params.classroom_id)
+    newRequest = FireBaseController.singleRequest(params["classroom_id"])
     return App.ClassroomHolder
   }
 });
 
-App.ApplicationView = Ember.View.extend({
+Ember.View.reopen({
   didInsertElement: function() {
-    this.$('pre').each(function() {prettyPrint()});
-    // this.$('pre.prettyPrint').style('width')
+    Ember.run.schedule('afterRender', this, this.udpateCodePrettify);
+  },
+
+  udpateCodePrettify: function() {
+    this.$('pre').each(function() { prettyPrint() });
   }
 });
-
 
 App.ClassroomHolder = Ember.ArrayController.create({
   content: [],
@@ -42,14 +46,9 @@ App.ClassroomHolder = Ember.ArrayController.create({
 })
 
 App.ClassRoom = Ember.Object.extend({
-  classroom_id: "",
-  content: ""
-  // classroomObserver: function() {
-    // console.log("observer notified")
-  // }.observes('name').on('init')
+  // classroom_id: "",
+  // content: ""i
 })
-
-
 
 App.ClassroomController = Ember.Controller.extend({
   actions: {
