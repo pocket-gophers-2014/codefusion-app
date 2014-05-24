@@ -1,15 +1,16 @@
-// var express = require('express');
-// var application = express();
+var express = require('express');
+var logfmt = require("logfmt");
+var app = express();
 
-// application.configure(function() {
-//   application.use(express.static(__dirname));
-//   application.use(express.logger('dev'));
-//   application.use(express.bodyParser());
-// });
+app.configure(function() {
+  app.use(express.static(__dirname));
+  app.use(express.logger('dev'));
+  app.use(express.bodyParser());
+});
 
-// // application.get('*', function() {
-// //   res.sendfile('index.html')
-// // })
+app.get('*', function() {
+  res.sendfile('index.html')
+})
 
-// application.listen(8080)
-// console.log("---------- App listening on port 8080 ----------")
+app.listen(8080)
+console.log("---------- App listening on port 8080 ----------")

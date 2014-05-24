@@ -1,31 +1,32 @@
 {
-  "name" : "fuzion-app",
-  "version" : "0.0.1",
-  "description" : "One way text editor sharing",
-  // "main" : "server.js",
-  "postinstall": "bower install; grunt dist",
+  "name": "fuzion-app",
+  "version": "0.0.0",
+  "description": "One way text editor sharing",
+  "main": "server.js",
+  "directories": {
+    "test": "tests"
+  },
   "dependencies": {
-    "express": "~3.4.2",
-    "lockfile": "~>0.4.0",
-    "bower": "~1.3.2",
-    "grunt": "~0.4.1",
-    "grunt-cli": "~0.1.9",
-    "load-grunt-config": "~0.7.0",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-copy": "~0.4.1",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-jshint": "~0.8.0",
-    "grunt-contrib-uglify": "~0.2.2",
-    "grunt-contrib-cssmin": "~0.6.1",
-    "grunt-preprocess": "~3.0.1",
-    "grunt-es6-module-transpiler": "~0.6.0",
-    "grunt-concat-sourcemap": "~0.4.0",
-    "grunt-concurrent": "~0.4.3",
-    "grunt-usemin": "~0.1.12",
-    "grunt-rev": "~0.1.0",
-    "grunt-ember-templates": "~0.4.17",
-    "grunt-contrib-testem": "~0.5.14",
-    "grunt-contrib-less": "~0.8.2"
-  }
+    "express": "^3.4.8",
+    "logfmt": "^1.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pocket-gophers-2014/fuzion-app.git"
+  },
+  "keywords": [
+    "fuzion",
+    "heroku"
+  ],
+  "author": "aaron-james",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pocket-gophers-2014/fuzion-app/issues"
+  },
+  "homepage": "https://github.com/pocket-gophers-2014/fuzion-app"
 }
