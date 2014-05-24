@@ -34,8 +34,11 @@
 
   <script type="text/x-handlebars" id="index">
     <ul>
-    {{#each item in   }}
-      <li>{{item}}</li>
+    {{#each}}
+      <li>classroom_id: {{classroom_id}}</li>
+      <ul>
+        <li> content: {{content}} </li>
+      </ul>
     {{/each}}
     </ul>
   </script>

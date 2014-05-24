@@ -1,5 +1,12 @@
 App = Ember.Application.create({ });
 
+App.IndexRoute = Ember.Route.extend({
+  model: function() {
+    newRequest = FireBaseController.multiRequest()
+    return App.ClassroomHolder
+  }
+});
+
 App.Router.map(function() {
   this.resource('classrooms', function(){
     this.resource('classroom', {'path': '/:classroom_id'})
