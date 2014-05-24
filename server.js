@@ -1,5 +1,5 @@
 var express = require('express');
-var logfmt = require("logfmt");s
+var logfmt = require("logfmt");
 var port = process.env.PORT || 8080;
 var app = express();
 
