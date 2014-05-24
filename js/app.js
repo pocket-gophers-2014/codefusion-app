@@ -28,6 +28,7 @@ App.ClassroomRoute = Ember.Route.extend({
 
 Ember.View.reopen({
   didInsertElement: function() {
+    // this._super()
     Ember.run.schedule('afterRender', this, this.udpateCodePrettify);
   },
 

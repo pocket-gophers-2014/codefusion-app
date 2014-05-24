@@ -26,16 +26,16 @@ header h1 {
 
 .column {
   display: inline-block;
-  border: 1px black solid;
   margin: 0 5%;
   height: 100%;
 }
 
-.column article {
+article {
   vertical-align: top;
 }
 
 .column.left {
+  border: 1px black solid;
   width: 25%;
 }
 
