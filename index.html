@@ -19,6 +19,7 @@
   <script src="js/app.js"></script>
   <script src="js/routes.js"></script>
   <script src="js/views/classroomprettify.js"></script>
+  <script src="js/views/savenotes.js"></script>
   <script src="js/controllers/classroomcontroller.js"></script>
   <script src="js/controllers/classroomholdercontroller.js"></script>
   <script src="js/controllers/firebasecontroller.js"></script>
@@ -67,8 +68,10 @@
   </script>
 
 
-
   <script type="text/x-handlebars" data-template-name="classrooms">
+      {{input id='saveform' placeholder=file_name}}
+      <input type="button" value="Save Code" {{#view App.SaveNotesOnClick}} {{/view}}
+
       <h2>classroom_code: {{classroom_code}}</h2>
       <section class="classroom-text">
         {{ partial 'code-view' }}
@@ -81,7 +84,7 @@
         <table class="code-table">
           <tbody>
             <tr>
-              <td class="code"><pre class="prettyprint">{{file_content}}</pre></td>
+              <td class="code"><pre id="code" class="prettyprint">{{file_content}}</pre></td>
             </tr>
           </tbody>
         </table>
@@ -99,6 +102,8 @@
         </table>
     </article>
   </script>
+
+
 
 </body>
 </html>
