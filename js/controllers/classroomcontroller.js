@@ -12,6 +12,7 @@ App.ClassroomRoute = Ember.Route.extend({
     // this is firebase data updates
     newRequest = FireBaseController.singleRequest(params["classroom_id"])
   }
+
 });
 
 
