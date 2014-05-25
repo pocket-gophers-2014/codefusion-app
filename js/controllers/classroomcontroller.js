@@ -2,7 +2,6 @@
 App.ClassroomsRoute = Ember.Route.extend({
   model: function() {
     console.log("updating classrooms route")
-    // this is initial page load
     return App.CurrentClassroom;
   }
 });
