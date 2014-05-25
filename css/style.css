@@ -1,5 +1,4 @@
 .ember-application {
-/*  margin: 2%;*/
   background: #f2f3f7;
   font-family: 'Source Code Pro';
 }
@@ -16,23 +15,23 @@ body {
 }
 
 .body {
-  padding-bottom: 100px;
+  padding-bottom: 50px;
   max-width: 1200px;
   margin: auto;
-  border: 1px black solid;
 }
 
-header {
+header.main {
   text-align: center;
+  height: 150px;
 }
 
-header a {
+header.main a {
   font-weight: normal;
   color: #000;
   text-decoration: none;
 }
 
-header h1 {
+header.main h1 {
   font-size: 4em;
   margin-bottom: 0;
 }
@@ -43,6 +42,8 @@ footer {
   bottom: 0;
   width: 100%;
   height: 100px;
+  clear: both;
+/*  padding: 0 25px;*/
 }
 
 footer article {
@@ -61,13 +62,10 @@ footer p {
   vertical-align: top;
 }
 
-hr {
-  margin: 0;
-}
-
 .column {
   display: inline-block;
   height: 100%;
+  float: left;
 }
 
 article {
@@ -75,43 +73,83 @@ article {
 }
 
 .column.left {
-  border: 1px black solid;
   width: 35%;
-  margin-right: 5%;
 }
 
 .column.right {
-  border: 1px black solid;
+  margin-right: -100%;
+  margin-left: 40%;
   width: 55%;
 }
 
+.classroom-list {
+  margin-top: 20px;
+  background: #707070;
+  border-radius: 5px;
+  color: #F2F3F7;
+}
+
+.classroom-list header {
+  color: #000;
+  text-align: center;
+  padding: 2.5px 0;
+  background: #B7B7B7;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
 #classroom-list {
-  height: 600px;
+  height: 550px;
   overflow: auto;
 }
 
-/*header > * {
-  display: inline-block;
+#classroom-list ul {
+  list-style-type: none;
 }
 
-nav.main ul {
-  display: inline-block;
-  text-align: center;
+#classroom-list h4 {
+  margin-bottom: 0;
 }
 
-li.navigation {
-  display: inline-block;
+#classroom-list p {
+  margin-top: 5px;
 }
 
-li.navigation a {
-  font-size: 2em;
+@media (max-width: 1200px) {
+  .body {
+    padding: 0 25px 50px 25px;
+  }
 }
 
-li.navigation:before {
-  content: " | ";
-  font-size: 2em
+@media (max-width: 700px) {
+  header.main {
+    height: 75px;
+  }
+
+  header.main h1 {
+    font-size: 3em;
+  }
+
+  .body {
+    padding: 0 25px 50px 25px;
+  }
+
+  .column {
+    display: block;
+  }
+
+  .column.left, .column.right {
+    margin: 0;
+    width: 100%;
+  }
 }
 
-li.navigation:first-child:before {
-  content: none;
-}*/
+@media (max-width: 420px) {
+  header.main {
+    height: 75px;
+  }
+
+  header.main h1 {
+    font-size: 2em;
+  }
+}

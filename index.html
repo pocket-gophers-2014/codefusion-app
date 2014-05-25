@@ -28,9 +28,8 @@
 </head>
 <body>
   <script type="text/x-handlebars">
-    <header>
+    <header class="main">
       <h1>{{#link-to 'index' }}codefusion.io{{/link-to}}</h1>
-      <hr>
     </header>
     <section class="body">
     {{outlet}}
@@ -45,20 +44,24 @@
 
   <script type="text/x-handlebars" id="index">
     <section class="content">
-      <article class="column left">
-        <p>Currently trending classrooms...</p>
-        <article id="classroom-list">
-          <ul>
-            {{#each}}
-              <li><h4 class="file-name">File name: {{#link-to 'classroom' classroom_code }} {{file_name}} {{/link-to}}</h4>
-              <p>Classroom code: {{classroom_code}}</p></li>
-            {{/each}}
-          </ul>
-        </article>
-      </article>
-
       <article class="column right">
         <article id="about"><p><strong>Codefusion</strong> is an app that will change the way you share and communicate code.</p></article>
+      </article>
+
+      <article class="column left">
+        <section class="classroom-list">
+          <header>
+          <h3>Currently trending classrooms...</h3>
+          </header>
+          <article id="classroom-list">
+            <ul>
+              {{#each}}
+                <li><h4 class="file-name">File name: {{#link-to 'classroom' classroom_code }} {{file_name}} {{/link-to}}</h4>
+                <p>Classroom code: {{classroom_code}}</p></li>
+              {{/each}}
+            </ul>
+          </article>
+        </section>
       </article>
     </section>
   </script>
