@@ -1,10 +1,9 @@
 App.NotesView = Ember.View.extend({
   refresh: function() {
-    var pretty = function(prettify) {
-
+    var prettify = function() {
       $('pre').removeClass('prettyprinted')
       $('pre').each(function() { prettyPrint() })
     }
-    setTimeout(pretty, 1)
+    setTimeout(prettify, 1)
   }
 }).create()

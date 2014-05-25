@@ -8,6 +8,7 @@ FireBaseController = {
       data.forEach(function(classroom) {
         App.ClassroomHolder.updateContent(classroom.val())
       })
+      App.ClassroomHolder.reverseObjects()
     })
   },
   singleRequest: function(params) {
