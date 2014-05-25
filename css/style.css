@@ -1,8 +1,25 @@
-/* Put your CSS here */
 .ember-application {
-  margin: 2%;
+/*  margin: 2%;*/
   background: #f2f3f7;
   font-family: 'Source Code Pro';
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.ember-view {
+  min-height: 100%;
+  position: relative;
+}
+
+.body {
+  padding-bottom: 100px;
+  max-width: 1200px;
+  margin: auto;
+  border: 1px black solid;
 }
 
 header {
@@ -20,13 +37,36 @@ header h1 {
   margin-bottom: 0;
 }
 
-.content {
-  /*text-align: center;*/
+footer {
+  text-align: center;
+  postition: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+}
+
+footer article {
+  padding-top: 30px;
+}
+
+footer p, footer a {
+  display: inline-block;
+}
+
+footer img {
+  margin: 8px;
+}
+
+footer p {
+  vertical-align: top;
+}
+
+hr {
+  margin: 0;
 }
 
 .column {
   display: inline-block;
-  margin: 0 5%;
   height: 100%;
 }
 
@@ -36,11 +76,18 @@ article {
 
 .column.left {
   border: 1px black solid;
-  width: 25%;
+  width: 35%;
+  margin-right: 5%;
 }
 
 .column.right {
-  width: 50%;
+  border: 1px black solid;
+  width: 55%;
+}
+
+#classroom-list {
+  height: 600px;
+  overflow: auto;
 }
 
 /*header > * {

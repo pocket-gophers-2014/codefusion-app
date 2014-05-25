@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Fuzion App</title>
+  <title>codefusion.io</title>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/monokai.css">
@@ -28,33 +28,37 @@
 </head>
 <body>
   <script type="text/x-handlebars">
-  <header>
-    <h1>{{#link-to 'index' }}Fuzion{{/link-to}}</h1>
-    <hr>
-  </header>
-
-  {{outlet}}
-
+    <header>
+      <h1>{{#link-to 'index' }}codefusion.io{{/link-to}}</h1>
+      <hr>
+    </header>
+    <section class="body">
+    {{outlet}}
+    </section>
+    <footer>
+    <article>
+      <p><strong>codefusion.io</strong> is made for the people, by the people</p>
+      <a href="https://github.com/pocket-gophers-2014/codefusion-app" target="_blank"><img src='css/img/GitHub-Mark-32px.png'></a>
+      </article>
+    </footer>
   </script>
 
   <script type="text/x-handlebars" id="index">
     <section class="content">
       <article class="column left">
-        <article id="classroom-list">
         <p>Currently trending classrooms...</p>
+        <article id="classroom-list">
           <ul>
             {{#each}}
-              <li>{{#link-to 'classroom' classroom_code }} {{classroom_code}} {{/link-to}}</li>
-              <ul>
-                <li> file_content: {{file_content}} </li>
-              </ul>
+              <li><h4 class="file-name">File name: {{#link-to 'classroom' classroom_code }} {{file_name}} {{/link-to}}</h4>
+              <p>Classroom code: {{classroom_code}}</p></li>
             {{/each}}
           </ul>
         </article>
       </article>
 
       <article class="column right">
-        <article id="about"><p><strong>Fuzion</strong> is an app...</p></article>
+        <article id="about"><p><strong>Codefusion</strong> is an app that will change the way you share and communicate code.</p></article>
       </article>
     </section>
   </script>
