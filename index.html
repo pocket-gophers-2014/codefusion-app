@@ -45,34 +45,27 @@
 
   <script type="text/x-handlebars" id="index">
     <section class="content">
-      <article class="column right">
+      <article class="column">
         <article id="about"><p><strong>Codefusion</strong> is an app that will change the way you share and communicate code.</p></article>
-      </article>
-
-      <article class="column left">
-        <section class="classroom-list">
-          <header>
-          <h3>Currently trending classrooms...</h3>
-          </header>
-          <article id="classroom-list">
-            <ul>
-              {{#each}}
-                <li><h4 class="file-name">File name: {{#link-to 'classroom' classroom_code }} {{file_name}} {{/link-to}}</h4>
-                <p>Classroom code: {{classroom_code}}</p></li>
-              {{/each}}
-            </ul>
-          </article>
-        </section>
+        <article id="url-form">
+          <form action="classrooms/">
+            <span>Enter classroom code here:</span>
+            <input type="text" name="classroom_code">
+            <input type="submit" value="Go!">
+          </form>
+        </article>
       </article>
     </section>
   </script>
 
 
   <script type="text/x-handlebars" data-template-name="classrooms">
+      <h2>File name: {{file_name}}</h2>
+      <h3>Classroom code: {{classroom_code}}</h3>
+
       {{input id='saveform' placeholder=file_name}}
       <input type="button" value="Save Code" {{#view App.SaveNotesOnClick}} {{/view}}
 
-      <h2>classroom_code: {{classroom_code}}</h2>
       <section class="classroom-text">
         {{ partial 'code-view' }}
         {{ partial 'note-view' }}
