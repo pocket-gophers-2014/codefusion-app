@@ -1,9 +1,10 @@
-Ember.View.reopen({
-  didInsertElement: function() {
-    Ember.run.schedule('afterRender', this, this.udpateCodePrettify);
-  },
+App.NotesView = Ember.View.extend({
+  refresh: function() {
+    var pretty = function(prettify) {
 
-  udpateCodePrettify: function() {
-    this.$('pre').each(function() { prettyPrint() });
+      $('pre').removeClass('prettyprinted')
+      $('pre').each(function() { prettyPrint() })
+    }
+    setTimeout(pretty, 1)
   }
-});
+}).create()
