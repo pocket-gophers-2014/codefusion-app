@@ -9,9 +9,9 @@ app.configure(function() {
   app.use(express.bodyParser());
 });
 
-app.get('*', function() {
-  res.sendfile('index.html')
-})
+// app.get('*', function() {
+  // res.sendfile('index.html')
+// })
 
 app.listen(port)
 console.log("---------- App listening on port 8080 ----------")
