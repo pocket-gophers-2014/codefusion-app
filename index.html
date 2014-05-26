@@ -19,6 +19,7 @@
   <script src="js/app.js"></script>
   <script src="js/routes.js"></script>
   <script src="js/views/classroomprettify.js"></script>
+  <script src="js/views/redirecttoclassroom.js"></script>
   <script src="js/views/savenotes.js"></script>
   <script src="js/controllers/classroomcontroller.js"></script>
   <script src="js/controllers/classroomholdercontroller.js"></script>
@@ -48,10 +49,10 @@
       <article class="column">
         <article id="about"><p><strong>Codefusion</strong> is an app that will change the way you share and communicate code.</p></article>
         <article id="url-form">
-          <form action="#/classrooms/">
+          <form>
             <span>Enter classroom code here:</span>
             <input type="text" name="classroom_code">
-            <input type="submit" value="Go!">
+            <input type="submit" value="Go!" {{#view App.RedirectToClassroom}} {{/view}}
           </form>
         </article>
       </article>
