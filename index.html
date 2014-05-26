@@ -18,9 +18,11 @@
 
   <script src="js/app.js"></script>
   <script src="js/routes.js"></script>
+  <script src="js/views/masterviewcontroller.js"></script>
   <script src="js/views/classroomprettify.js"></script>
   <script src="js/views/redirecttoclassroom.js"></script>
   <script src="js/views/savenotes.js"></script>
+  <script src="js/views/mergednotes.js"></script>
   <script src="js/controllers/classroomcontroller.js"></script>
   <script src="js/controllers/classroomholdercontroller.js"></script>
   <script src="js/controllers/firebasecontroller.js"></script>
@@ -61,22 +63,29 @@
 
 
   <script type="text/x-handlebars" data-template-name="classrooms">
-      <h2>File name: {{file_name}}</h2>
-      <h3>Classroom code: {{classroom_code}}</h3>
-
-      {{input id='saveform' placeholder=file_name}}
-      <input type="button" value="Save Code" {{#view App.SaveNotesOnClick}} {{/view}}
+      {{ partial 'saveform'}}
+      <h2>classroom_code: {{classroom_code}}</h2>
 
       <section class="classroom-text">
         {{ partial 'code-view' }}
         {{ partial 'note-view' }}
+        {{ partial 'merged-view' }}
       </section>
+
+  </script>
+
+  <script type="text/x-handlebars" data-template-name='_saveform'>
+      {{input id='saveform' placeholder=file_name}}
+
+      <input type="button" value="Save Code with Notes" {{#view App.SaveNotesOnClick}} {{/view}}
+
   </script>
 
   <script type="text/x-handlebars" data-template-name="_code-view">
-    <article class="code-view text-area file">
+    <article class="code-view text-area file" > Teacher Code
         <table class="code-table">
           <tbody>
+
             <tr>
               <td class="code"><pre id="code" class="prettyprint">{{file_content}}</pre></td>
             </tr>
@@ -85,8 +94,8 @@
     </article>
   </script>
 
-  <script type="text/x-handlebars" data-template-name="_note-view" >
-    <article class="note-view text-area file" >
+  <script type="text/x-handlebars" data-template-name="_note-view">
+    <article class="note-view text-area file" > Your Notes
         <table class="note-table">
           <tbody>
             <tr>
@@ -97,6 +106,17 @@
     </article>
   </script>
 
+  <script type="text/x-handlebars" data-template-name="_merged-view" >
+    <article class="note-view text-area file" > Code with Notes
+        <table class="note-table">
+          <tbody>
+            <tr>
+              <td class="code"><pre id="mergedcontent" class="prettyprint">{{view.mergedContent}}</pre></td>
+            </tr>
+          </tbody>
+        </table>
+    </article>
+  </script>
 
 
 </body>

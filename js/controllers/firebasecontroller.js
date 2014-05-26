@@ -1,6 +1,4 @@
-FireBaseController = {
-
-  // NEED TO HIDE IN ENV OR SET PASSWORD
+App.FireBaseController = Ember.Controller.extend({
   dataBaseLocation: "https://radiant-fire-3325.firebaseio.com/classrooms/",
   multiRequest: function() {
     var response =  new Firebase(this.dataBaseLocation)
@@ -15,7 +13,7 @@ FireBaseController = {
     new Firebase(this.dataBaseLocation)
     .once("value", function(data) {
       data.forEach(function(classroom) {
-        FireBaseController.checkRoomMatch(classroom, params)
+        App.FireBaseController.checkRoomMatch(classroom, params)
       })
     })
   },
@@ -27,9 +25,9 @@ FireBaseController = {
   initializeRoomWatch: function(fireBaseRoom) {
     var response =  new Firebase(this.dataBaseLocation + fireBaseRoom)
     response.on("value", function(data) {
-      console.log('response received')
       App.CurrentClassroom.updateAttributes(data.val())
+      App.MasterViewController.refreshView()
     })
   }
-}
+}).create()
 

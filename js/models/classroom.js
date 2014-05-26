@@ -6,7 +6,8 @@ App.CurrentClassroom = Ember.Object.extend({
     this.set("classroom_code", (params.classroom_code || ""))
     this.set("file_content", (params.file_content || ""))
     this.set("file_name", (params.file_name || ""))
-    App.NotesView.refresh()
+
+
   }
 }).create()
 
