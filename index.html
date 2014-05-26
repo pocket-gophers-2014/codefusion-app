@@ -20,6 +20,7 @@
   <script src="js/routes.js"></script>
   <script src="js/views/classroomprettify.js"></script>
   <script src="js/views/savenotes.js"></script>
+  <script src="js/views/mergednotes.js"></script>
   <script src="js/controllers/classroomcontroller.js"></script>
   <script src="js/controllers/classroomholdercontroller.js"></script>
   <script src="js/controllers/firebasecontroller.js"></script>
@@ -96,7 +97,17 @@
     </article>
   </script>
 
-
+  <script type="text/x-handlebars" data-template-name="_merged-view" >
+    <article class="note-view text-area file" >
+        <table class="note-table">
+          <tbody>
+            <tr>
+              <td class="code"><pre id="mergedcontent" class="prettyprint">{{view.mergedContent}}</pre></td>
+            </tr>
+          </tbody>
+        </table>
+    </article>
+  </script>
 
 </body>
 </html>
