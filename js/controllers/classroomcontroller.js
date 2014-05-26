@@ -9,5 +9,13 @@ App.ClassroomsRoute = Ember.Route.extend({
 App.ClassroomRoute = Ember.Route.extend({
   model: function(params) {
     App.FireBaseController.singleRequest(params["classroom_id"])
+  },
+  actions: {
+    toggleFolder: function(object) {
+      console.log(object)
+      console.log(id)
+
+    }
   }
 });
+

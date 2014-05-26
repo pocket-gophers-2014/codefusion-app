@@ -25,12 +25,14 @@
   <script src="js/views/classroomprettify.js"></script>
   <script src="js/views/redirecttoclassroom.js"></script>
   <script src="js/views/savenotes.js"></script>
+  <script src="js/views/folder_bar.js"></script>
   <script src="js/views/mergednotes.js"></script>
   <script src="js/controllers/classroomcontroller.js"></script>
   <script src="js/controllers/classroomholdercontroller.js"></script>
   <script src="js/controllers/firebasecontroller.js"></script>
   <script src="js/models/classroom.js"></script>
   <script src="js/models/classroomholder.js"></script>
+
 
 </head>
 <body>
@@ -64,10 +66,38 @@
     </section>
   </script>
 
+  <script type="text/x-handlebars" id="_folders">
+    {{#each JSON }}
+      {{partial "_subFolders"}}
+    {{/each}}
+  </script>
+
+  <script type="text/x-handlebars" id="_subFolders">
+
+    <ul>
+      <li id="folder-{{unbound id}}"  {{action toggleFolder this}}> {{folder_name}} </li>
+      <ul>
+      {{#each files }}
+      <li> {{file_name}} </li>
+      {{/each}}
+      </ul>
+      {{#if children}}
+      {{#each children}}
+        {{partial "subFolders" }}
+      {{/each}}
+      {{/if}}
+    </ul>
+
+  </script>
+
+
+
+
 
   <script type="text/x-handlebars" data-template-name="classrooms">
       {{ partial 'saveform'}}
       <h2>classroom_code: {{classroom_code}}</h2>
+      {{ partial 'folders'}}
 
       <section class="classroom-text">
         {{ partial 'code-view' }}
