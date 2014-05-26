@@ -29,7 +29,6 @@ App.MergedContentView = Ember.View.extend({
   _spliceContent: function(notes,code,commentType) {
     var mergedContent = []
     contentLength = Math.max(notes.length,code.length,1)
-    console.log(contentLength)
     for ( i = 0; i < contentLength ; i++ ) {
       mergedContent.push(splitCode[i])
       if (splitNote[i]) {
