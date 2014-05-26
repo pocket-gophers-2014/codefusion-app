@@ -25,7 +25,6 @@ App.FireBaseController = Ember.Controller.extend({
   initializeRoomWatch: function(fireBaseRoom) {
     var response =  new Firebase(this.dataBaseLocation + fireBaseRoom)
     response.on("value", function(data) {
-      console.log('response received')
       App.CurrentClassroom.updateAttributes(data.val())
       App.MasterViewController.refreshView()
     })
