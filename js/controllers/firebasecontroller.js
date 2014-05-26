@@ -27,6 +27,7 @@ App.FireBaseController = Ember.Controller.extend({
     response.on("value", function(data) {
       console.log('response received')
       App.CurrentClassroom.updateAttributes(data.val())
+      App.MasterViewController.refreshView()
     })
   }
 }).create()
