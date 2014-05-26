@@ -22,14 +22,17 @@ App.MergedContentView = Ember.View.extend({
       return "// "
     } if (App.CurrentClassroom.file_name.slice(-2) == "rb") {
       return "# "
+    } else {
+      return ""
     }
   },
   _spliceContent: function(notes,code,commentType) {
     var mergedContent = []
-    for ( i = 0; i < splitCode.length - 1 ; i++ ) { // bugs if only 1 line of code in #code page
+    contentLength = Math.max(notes.length,code.length,1)
+    for ( i = 0; i < contentLength ; i++ ) {
       mergedContent.push(splitCode[i])
       if (splitNote[i]) {
-        mergedContent.push(commentType + splitNote[i])  // add conditional for file type // vs #
+        mergedContent.push(commentType + splitNote[i])
       };
     }
     return mergedContent = mergedContent.join("\n")
