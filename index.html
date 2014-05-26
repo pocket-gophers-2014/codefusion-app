@@ -63,14 +63,21 @@
 
 
   <script type="text/x-handlebars" data-template-name="classrooms">
-      {{input id='saveform' placeholder=file_name}}
-      <input type="button" value="Save Code" {{#view App.SaveNotesOnClick}} {{/view}}
-
+      {{ partial 'saveform'}}
       <h2>classroom_code: {{classroom_code}}</h2>
       <section class="classroom-text">
         {{ partial 'code-view' }}
         {{ partial 'note-view' }}
+        {{ partial 'merged-view' }}
       </section>
+
+  </script>
+
+  <script type="text/x-handlebars" data-template-name='_saveform'>
+      {{input id='saveform' placeholder=file_name}}
+
+      <input type="button" value="Save Code" {{#view App.SaveNotesOnClick}} {{/view}}
+
   </script>
 
   <script type="text/x-handlebars" data-template-name="_code-view">

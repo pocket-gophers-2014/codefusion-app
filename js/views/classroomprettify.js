@@ -1,4 +1,4 @@
-App.NotesView = Ember.View.extend({
+App.LeaderCodeView = Ember.View.extend({
   refresh: function() {
     var prettify = function() {
       $('pre').removeClass('prettyprinted')
