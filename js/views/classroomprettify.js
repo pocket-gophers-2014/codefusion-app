@@ -1,10 +1,7 @@
-App.LeaderCodeView = Ember.View.extend({
+App.PrettifyView = Ember.View.extend({
   refresh: function() {
-    var prettify = function() {
-      $('pre').removeClass('prettyprinted')
-      $('pre').each(function() { prettyPrint() })
-    }
-    setTimeout(prettify, 1)
+    $('pre').removeClass('prettyprinted')
+    $('pre').each(function() { prettyPrint() })
   }
 }).create()
 
