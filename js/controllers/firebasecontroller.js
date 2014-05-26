@@ -1,14 +1,5 @@
 App.FireBaseController = Ember.Controller.extend({
-  dataBaseLocation: "https://radiant-fire-3325.firebaseio.com/classrooms/",
-  multiRequest: function() {
-    var response =  new Firebase(this.dataBaseLocation)
-    response.once("value", function(data) {
-      data.forEach(function(classroom) {
-        App.ClassroomHolder.updateContent(classroom.val())
-      })
-      App.ClassroomHolder.reverseObjects()
-    })
-  },
+  dataBaseLocation: "https://radiant-fire-3325.firebaseio.com/classrooms/", // need to investigate security..
   singleRequest: function(params) {
     new Firebase(this.dataBaseLocation)
     .once("value", function(data) {
