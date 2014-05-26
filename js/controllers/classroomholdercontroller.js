@@ -5,7 +5,7 @@ App.IndexRoute = Ember.Route.extend({
     App.CurrentClassroom.set('classroom_code',"")
     App.CurrentClassroom.set('file_content',"")
 
-    var newRequest = FireBaseController.multiRequest()
+    App.FireBaseController.multiRequest()
     return App.ClassroomHolder
   }
 });

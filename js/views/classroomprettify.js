@@ -7,3 +7,4 @@ App.LeaderCodeView = Ember.View.extend({
     setTimeout(prettify, 1)
   }
 }).create()
+
