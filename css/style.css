@@ -1,70 +1,107 @@
-/* Put your CSS here */
 .ember-application {
-  margin: 2%;
   background: #f2f3f7;
   font-family: 'Source Code Pro';
 }
 
-header {
-  text-align: center;
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-header a {
+.ember-view {
+  min-height: 100%;
+  position: relative;
+}
+
+.body {
+  padding-bottom: 50px;
+  max-width: 1200px;
+  min-height: 100%;
+  margin: auto;
+}
+
+header.main {
+  text-align: center;
+  height: 150px;
+}
+
+header.main a {
   font-weight: normal;
   color: #000;
   text-decoration: none;
 }
 
-header h1 {
+header.main h1 {
   font-size: 4em;
   margin-bottom: 0;
 }
 
-.content {
-  /*text-align: center;*/
+footer {
+  text-align: center;
+  postition: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+}
+
+footer article {
+  padding-top: 30px;
+  margin: 0 25px;
+}
+
+footer p, footer a {
+  display: inline-block;
+}
+
+footer img {
+  margin: 8px;
+}
+
+footer p {
+  vertical-align: top;
 }
 
 .column {
-  display: inline-block;
-  margin: 0 5%;
+  text-align: center;
   height: 100%;
+  margin: auto;
 }
 
 article {
   vertical-align: top;
 }
 
-.column.left {
-  border: 1px black solid;
-  width: 25%;
+@media (max-width: 1200px) {
+  .body {
+    padding: 0 25px 50px 25px;
+  }
 }
 
-.column.right {
-  width: 50%;
+@media (max-width: 700px) {
+  header.main {
+    height: 75px;
+  }
+
+  header.main h1 {
+    font-size: 3em;
+  }
+
+  .body {
+    padding: 0 25px 50px 25px;
+  }
+
+  .column {
+    display: block;
+  }
 }
 
-/*header > * {
-  display: inline-block;
-}
+@media (max-width: 420px) {
+  header.main {
+    height: 75px;
+  }
 
-nav.main ul {
-  display: inline-block;
-  text-align: center;
+  header.main h1 {
+    font-size: 2em;
+  }
 }
-
-li.navigation {
-  display: inline-block;
-}
-
-li.navigation a {
-  font-size: 2em;
-}
-
-li.navigation:before {
-  content: " | ";
-  font-size: 2em
-}
-
-li.navigation:first-child:before {
-  content: none;
-}*/
