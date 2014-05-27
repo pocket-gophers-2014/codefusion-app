@@ -12,6 +12,14 @@ App.FileRoute = Ember.Route.extend({
   },
   afterModel: function() {
     App.MasterViewController.refreshView()
+  },
+  actions: {
+    saveNote: function(params){
+      debugger
+      fileId = params['file_id']
+      // noteContent = $('#note-area').val()
+      App.NoteHolder.notes.push({fileId: noteContent})
+    }
   }
 })
 

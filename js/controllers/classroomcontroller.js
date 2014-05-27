@@ -13,6 +13,7 @@ App.ClassroomRoute = Ember.Route.extend({
     toggleFolder: function(object) {
       // add capability of collapsing files
     }
+    
   }
 });
 
