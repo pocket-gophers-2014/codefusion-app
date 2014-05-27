@@ -25,14 +25,13 @@
   <script src="js/views/classroomprettify.js"></script>
   <script src="js/views/redirecttoclassroom.js"></script>
   <script src="js/views/savenotes.js"></script>
-  <script src="js/views/folder_bar.js"></script>
   <script src="js/views/mergednotes.js"></script>
   <script src="js/controllers/classroomcontroller.js"></script>
-  <script src="js/controllers/classroomholdercontroller.js"></script>
+  <script src="js/controllers/filecontroller.js"></script>
   <script src="js/controllers/firebasecontroller.js"></script>
   <script src="js/models/classroom.js"></script>
   <script src="js/models/directory.js"></script>
-  <script src="js/models/classroomholder.js"></script>
+  <script src="js/models/fileholder.js"></script>
 
 
 </head>
@@ -42,7 +41,9 @@
       <h1>{{#link-to 'index' }}codefusion.io{{/link-to}}</h1>
     </header>
     <section class="body">
+
     {{outlet}}
+
     </section>
     <footer>
     <article>
