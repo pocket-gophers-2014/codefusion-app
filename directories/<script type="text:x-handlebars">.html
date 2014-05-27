@@ -1,0 +1,18 @@
+<script type="text/x-handlebars" id="_recursiveList">
+
+  <ul>
+    <li>{{folder_name}}
+      <ul>
+        {{#each files}}
+        <li>{{file_name}}
+        {{#if children}}
+          {{#each children}}
+          {{ partial "recursiveList"}}
+          {{/each}}
+        {{/if}}
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+</script>

@@ -9,11 +9,14 @@
   <link rel="stylesheet" href="css/classroom.css">
   <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700' rel='stylesheet' type='text/css'>
 
+  <!-- <script src="js/libs/jquery-1.11.1.min.js"></script> -->
+  <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
-  <script src="js/libs/jquery-1.10.2.js"></script>
-  <script src="js/libs/handlebars-1.1.2.js"></script>
-  <script src="js/libs/ember-1.5.1.js"></script>
-  <script src="js/libs/prettify.js"></script>
+  <!-- <script src="js/libs/handlebars-1.1.2.js"></script> -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
+  <!-- <script src="js/libs/ember.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ember.js/1.5.1/ember.min.js"></script>
+  <script src="js/libs/prettify.small.js"></script>
   <script src="tests/runner.js"></script>
 
   <script src="js/app.js"></script>
@@ -22,6 +25,7 @@
   <script src="js/views/classroomprettify.js"></script>
   <script src="js/views/redirecttoclassroom.js"></script>
   <script src="js/views/savenotes.js"></script>
+  <script src="js/views/folder_bar.js"></script>
   <script src="js/views/mergednotes.js"></script>
   <script src="js/controllers/classroomcontroller.js"></script>
   <script src="js/controllers/classroomholdercontroller.js"></script>
@@ -29,7 +33,9 @@
   <script src="js/models/classroom.js"></script>
   <script src="js/models/classroomholder.js"></script>
 
+
 </head>
+
 <body>
   <script type="text/x-handlebars">
     <header class="main">
@@ -61,10 +67,37 @@
     </section>
   </script>
 
+  <script type="text/x-handlebars" id="_folders">
+    {{#each JSON }}
+      {{partial "_subFolders"}}
+    {{/each}}
+  </script>
+
+  <script type="text/x-handlebars" id="_subFolders">
+    <ul>
+      <li id="folder-{{unbound id}}"  {{action toggleFolder this}}> {{folder_name}} </li>
+      <ul>
+      {{#each files }}
+      <li> {{file_name}} </li>
+      {{/each}}
+      </ul>
+      {{#if children}}
+      {{#each children}}
+        {{partial "subFolders" }}
+      {{/each}}
+      {{/if}}
+    </ul>
+
+  </script>
+
+
+
+
 
   <script type="text/x-handlebars" data-template-name="classrooms">
       {{ partial 'saveform'}}
       <h2>classroom_code: {{classroom_code}}</h2>
+      {{ partial 'folders'}}
 
       <section class="classroom-text">
         {{ partial 'code-view' }}
