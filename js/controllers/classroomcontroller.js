@@ -8,12 +8,13 @@ App.ClassroomsRoute = Ember.Route.extend({
 App.ClassroomRoute = Ember.Route.extend({
   model: function(params) {
     App.FireBaseController.singleRequest(params["classroom_id"])
+    App.NoteView.listenForKeystroke()
   },
   actions: {
     toggleFolder: function(object) {
       // add capability of collapsing files
     }
-    
+
   }
 });
 
