@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/monokai.css">
   <link rel="stylesheet" href="css/classroom.css">
-  <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700' rel='stylesheet' type='text/css'>
+  <!-- <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700' rel='stylesheet' type='text/css'> -->
 
   <!-- <script src="js/libs/jquery-1.11.1.min.js"></script> -->
   <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -20,6 +20,7 @@
 
   <script src="js/app.js"></script>
   <script src="js/routes.js"></script>
+  <script src="js/controllers/indexController.js"></script>
 </head>
 <body>
 
@@ -38,6 +39,19 @@
       <a href="https://github.com/pocket-gophers-2014/codefusion-app" target="_blank"><img src='css/img/GitHub-Mark-32px.png'></a>
       </article>
     </footer>
+  </script>
+
+  <script type="text/x-handlebars" id='index'>
+    <section>
+      <article>
+        <form {{ action "redirectToClassroom" classroom_id on="submit" }}>
+          <h4>Enter Classroom Code:</h4>
+          {{classroom_id}}
+          <br>
+          {{input type="text" value=classroom_id}}
+        </form>
+      </article>
+    </section>
   </script>
 
 </body>
