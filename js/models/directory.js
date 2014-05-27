@@ -4,11 +4,6 @@ App.Directory = Ember.Object.extend({
   folders: [],
   setFolders: function(params) {
     // console.log(this.set('folders', App.Directory.create(params)))
-    console.log(this.folders)
-    for (i in this.folders) {
-      console.log(this.folders[i])
-    }
-
 
     // files = App.File.create([{file_name: "test"},{file_name: "other"}])
   }
