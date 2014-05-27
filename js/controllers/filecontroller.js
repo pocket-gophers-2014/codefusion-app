@@ -7,21 +7,29 @@ App.FilesRoute = Ember.Route.extend({
 App.FileRoute = Ember.Route.extend({
   model: function(params) {
     console.log(params.file_id)
-    // BUG teacher code area not updating on firebase changes (fileholder is updating, but it is not refreshing view)
-    return App.FileHolder.findBy('file_name', params.file_id)
+    
+    // NOTE STUFF
+    var file = App.FileHolder.findBy('file_name', params.file_id)
+    var note = App.NoteHolder.notes[params.file_id]
+
+    // console.log("Inside FileRoute.model. file: " + file + " note: " + note)
+
+    if (note){
+      file.note = note
+      App.NoteView.setNoteView(note)
+    }
+    else{
+      App.NoteView.clearNoteView()
+    }
+
+    //Return the file
+    return file
   },
   afterModel: function() {
     App.MasterViewController.refreshView()
   },
   actions: {
-    saveNote: function(newFileId){
-      var noteContent = $('#note-area').val()
-      if(noteContent){
-        var urlParts = window.location.hash.split('/')
-        oldFileId = urlParts[urlParts.length - 1]
-        App.NoteHolder.notes[oldFileId] = noteContent
-      }
-    }
+    
   }
 })
 

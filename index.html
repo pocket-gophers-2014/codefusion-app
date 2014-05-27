@@ -26,6 +26,7 @@
   <script src="js/views/redirecttoclassroom.js"></script>
   <script src="js/views/savenotes.js"></script>
   <script src="js/views/mergednotes.js"></script>
+  <script src="js/views/note.js"></script>
   <script src="js/controllers/classroomcontroller.js"></script>
   <script src="js/controllers/filecontroller.js"></script>
   <script src="js/controllers/firebasecontroller.js"></script>
@@ -92,7 +93,7 @@
       <li id="folder-{{unbound id}}"  > {{folder_name}} </li>
       <ul>
       {{#each this.files }}
-        <li {{action 'saveNote' file_name}}>{{#linkTo 'file' file_name }} {{file_name}} {{/linkTo}}</li>
+        <li>{{#linkTo 'file' file_name }} {{file_name}} {{/linkTo}}</li>
       {{/each}}
       </ul>
       {{#if folders}}

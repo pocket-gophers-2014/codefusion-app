@@ -8,6 +8,9 @@ App.MasterViewController = Ember.Controller.extend({
   },
   initializeNoteListener: function() {
     App.MergedContentView.listenForKeystroke()
+  },
+  initializeNoteSaveListener: function(){ //This is new
+    App.NoteView.listenForKeystroke()
   }
 }).create()
 
