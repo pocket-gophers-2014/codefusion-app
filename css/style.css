@@ -105,3 +105,22 @@ article {
     font-size: 2em;
   }
 }
+
+/*
+
+  DAVID'S CSS
+
+*/
+
+.tree {
+  border: 1px dashed black;
+  width: 200px;
+  overflow: scroll;
+  height: 400px;
+}
+
+.main{
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
