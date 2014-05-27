@@ -12,8 +12,6 @@ App.ClassroomRoute = Ember.Route.extend({
   },
   actions: {
     toggleFolder: function(object) {
-      console.log(object)
-      console.log(id)
 
     }
   }

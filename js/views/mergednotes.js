@@ -3,11 +3,11 @@ App.MergedContentView = Ember.View.extend({
     document.onkeyup = this.renderMergedContent.bind(this)
   },
   renderMergedContent: function() {
-    splitCode = this._splitCode()
-    splitNote = this._splitNotes()
-    commentType = this._checkFileType()
-    mergedContent = this._spliceContent(splitNote,splitCode,commentType)
-    this._appendDom(mergedContent)
+    // splitCode = this._splitCode()
+    // splitNote = this._splitNotes()
+    // commentType = this._checkFileType()
+    // mergedContent = this._spliceContent(splitNote,splitCode,commentType)
+    // this._appendDom(mergedContent)
   },
   _splitNotes: function() {
     var note = document.querySelector('#note').value
