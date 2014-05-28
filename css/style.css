@@ -9,20 +9,6 @@ body, html {
   padding: 0;
 }
 
-.ember-view {
-  /*min-height: 100%;*/
-  /*position: relative;*/
-}
-
-.body {
-  margin: auto;
-  height: 90%;
-  width: 90%;
-  /*position: absolute;*/
-  /*font-size: 0;*/
-  /*border: 5px solid grey;*/
-}
-
 header.main {
   text-align: center;
   height: 75px;
