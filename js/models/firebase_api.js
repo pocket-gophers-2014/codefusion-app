@@ -4,7 +4,7 @@ App.FirebaseAPI = {
   initClassroomChangeListener: function(classroom_code) {
     new Firebase(this.dataBaseLocation)
     .once("value", function(data) {
-      var badUrl=false
+      var badUrl=false // needed?
       var numMatches=0
       data.forEach(function(classroom) {
         numMatches=numMatches+App.FirebaseAPI.checkRoomMatch(classroom, classroom_code)

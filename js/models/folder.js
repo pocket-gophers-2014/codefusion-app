@@ -2,7 +2,7 @@ App.FolderModel = Ember.Object.extend({
   content: {folder_name: "Loading your directory..."},
   fileCount: 0,
   previousFileCount: 0,
-  currentlyModifiedFile: "",
+  currentlyModifiedFile: "listening..",
   checkForFileAdditionsOrRemovals: function(folder) {
     this.set('fileCount', 0)
     this.checkFiles(folder)
@@ -15,8 +15,6 @@ App.FolderModel = Ember.Object.extend({
     if (parentFolder.files !== undefined) {
       for (var i = 0; i < parentFolder.files.length; i++) {
         App.FolderModel.fileCount += 1
-
-
       }
     }
     if (parentFolder.folders !== undefined) {

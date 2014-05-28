@@ -11,6 +11,7 @@ App.CurrentFile = Ember.Object.extend({
     if (parentFolder.files !== undefined) {
       for (var i = 0; i < parentFolder.files.length; i++) {
         var iterFileName = parentFolder.files[i].file_name.replace(/\//g, "+")
+        App.Classroom.updateRoomFiles(iterFileName, parentFolder.files[i].file_content)
         if (iterFileName == App.CurrentFile.fileName) {
           App.CurrentFile.set('fileContent', parentFolder.files[i].file_content)
         }

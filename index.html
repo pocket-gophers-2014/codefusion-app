@@ -67,6 +67,7 @@
 
   <script type="text/x-handlebars" id='classroom'>
     <section class="folder-nav col1">
+    {{fileLinkMod model.currentlyModifiedFile}}
       <div id="folder-nav">
       {{#with model.content}}
         {{partial "_subFolders" }}
