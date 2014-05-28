@@ -18,11 +18,10 @@ App.Classroom = Ember.Object.extend({
 
 App.FileRoute = Ember.Route.extend({
   beforeModel: function(params) {
-    console.log("In beforeModel")
     var preURL = '/classrooms/' + App.Classroom.classroomCode + '/files/'
     var formattedFileName = params.intent.url.replace(preURL, "")
     App.CurrentFile.set('fileName', formattedFileName)
-    debugger
+    App.CurrentFile.parseNewContent(App.Classroom.content)
   },
 
   model: function() {
@@ -43,7 +42,6 @@ App.CurrentFile = Ember.Object.extend({
       for (var i = 0; i < parentFolder.files.length; i++) {
         var iterFileName = parentFolder.files[i].file_name.replace(/\//g, "+")
         if (iterFileName == App.CurrentFile.fileName) {
-          console.log("this should be the right file...")
           App.CurrentFile.set('fileContent', parentFolder.files[i].file_content)
         }
       }
