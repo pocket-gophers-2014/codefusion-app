@@ -65,6 +65,7 @@
   </script>
 
   <script type="text/x-handlebars" id='classroom'>
+    {{partial 'download'}}
     {{#with model.content}}
       {{partial "_subFolders" }}
     {{/with}}
@@ -117,6 +118,10 @@
           </tbody>
         </table>
     </article>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="_download">
+    <button {{action 'download'}}>Download as Zip</button>
   </script>
 
 </body>
