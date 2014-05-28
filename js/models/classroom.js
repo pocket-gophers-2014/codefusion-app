@@ -1,6 +1,12 @@
 App.Classroom = Ember.Object.extend({
   content: null,
   classroomCode: null,
+  folders: {folder_name: "Loading your directory..."},
+  currentlyModifiedFile: "listening..",
+
+
+
+
   asZipDirectory: function(){
     var files = this.content.files
     var folders = this.content.folders

@@ -11,7 +11,7 @@ Ember.Handlebars.helper('fileLinkMod', function(value, options) {
 Ember.Handlebars.helper('folderNameFilter', function(value, options) {
   if (value) {
     var lastIndex = value.lastIndexOf('/')
-    var showValue = value.slice(lastIndex+1,500)
+    var showValue = value.slice(lastIndex+1, 500)
     return showValue
   }
 })

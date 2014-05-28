@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/monokai.css">
   <link rel="stylesheet" href="css/classroom.css">
   <link rel="stylesheet" href="css/folder_nav.css">
+  <link rel="stylesheet" href="css/index.css">
   <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700' rel='stylesheet' type='text/css'>
 
   <!-- <script src="js/libs/jquery-1.11.1.min.js"></script> -->
@@ -32,9 +33,11 @@
   <script src="js/models/classroom.js"></script>
   <script src="js/models/current_file.js"></script>
   <script src="js/models/note_holder.js"></script>
-  <script src="js/models/folder.js"></script>
+  <script src="js/models/classroom_files.js"></script>
+  <script src="js/models/classroom_folders.js"></script>
   <script src="js/views/note_view.js"></script>
-  <script src="js/views/viewHelpers.js"></script>
+  <script src="js/views/handlebar_helpers.js"></script>
+  <script src="js/views/view_helpers.js"></script>
   <script src="js/views/master_view_controller.js"></script>
   <script src="js/views/prettify_view.js"></script>
 </head>
@@ -58,21 +61,23 @@
       <h1>{{#link-to 'index' }}codefusion.io{{/link-to}}</h1>
     </header>
     <section>
-      <article>
-        <form {{ action "redirectToClassroom" classroomCode on="submit" }}>
-          <h4>Enter Classroom Code:</h4>
-          {{input type="text" value=classroomCode}}
+      <article id="searchbar">
+        <form id="search" {{ action "redirectToClassroom" classroomCode on="submit" }}>
+         {{input type="text" value=classroomCode class="searchForm" placeholder="Search by classroom code.. "}}
+          <input type='image' value="Search" src="css/img/searchbar.png" id="searchimage"/>
         </form>
       </article>
     </section>
   </script>
 
   <script type="text/x-handlebars" id='classroom'>
+
     <section class="classroom-wrapper">
       <article class="folder-nav-wrapper">
         <div id="folder-nav">
           {{partial 'download'}}
-          {{#with model.content}}
+          {{fileLinkMod model.currentlyModifiedFile}}
+          {{#with model.folders}}
             {{partial "_subFolders" }}
           {{/with}}
         </div>

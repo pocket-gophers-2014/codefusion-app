@@ -3,14 +3,11 @@ App.ClassroomRoute = Ember.Route.extend({
     App.FirebaseAPI.initClassroomChangeListener(params.classroom_code)
     App.Classroom.set('classroomCode', params.classroom_code)
     App.NoteView.listenForKeystroke()
-    return App.FolderModel
+    return App.Classroom
   },
   actions: {
     toggleFolder: function(object) {
-      filtered = object.replace(/\//g, "\\+")
-      var target = $('#' + filtered)
-      target.toggle()
-      $(event.target).toggleClass('closed')
+      App.View.toggleFolder(object,event)
     },
     download: function(){
       saveAs(App.Classroom.asZipDirectory().generate({type:'blob'}), App.Classroom.classroomCode)
