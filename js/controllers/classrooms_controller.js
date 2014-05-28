@@ -8,9 +8,10 @@ App.ClassroomRoute = Ember.Route.extend({
   actions: {
     toggleFolder: function(object) {
       filtered = object.replace(/\//g, "\\+")
-      var target = $('#' + filtered)
-      target.toggle()
-      $(event.target).toggleClass('closed')
+      $('#' + filtered).toggle()
+      if (event != undefined) {
+        $(event.target).toggleClass('closed')
+      }
     }
   }
 });
