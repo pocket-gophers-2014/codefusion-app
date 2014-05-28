@@ -3,6 +3,14 @@ App.ClassroomRoute = Ember.Route.extend({
     App.FirebaseAPI.initClassroomChangeListener(params.classroom_code)
     App.Classroom.set('classroomCode', params.classroom_code)
     App.NoteView.listenForKeystroke()
-    return App.Classroom
+    return App.FolderModel
+  },
+  actions: {
+    toggleFolder: function(object) {
+      filtered = object.replace(/\//g, "-")
+      var target = $('#' + filtered)
+      target.toggle()
+      $(event.target).toggleClass('closed')
+    }
   }
 });
