@@ -1,5 +1,5 @@
 App.FolderModel = Ember.Object.extend({
-  content: {},
+  content: {folder_name: "Loading your directory..."},
   fileCount: 0,
   previousFileCount: 0,
   checkForFileAdditionsOrRemovals: function(folder) {
