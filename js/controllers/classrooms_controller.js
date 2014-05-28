@@ -3,7 +3,7 @@ App.ClassroomRoute = Ember.Route.extend({
     App.FirebaseAPI.initClassroomChangeListener(params.classroom_code)
     App.Classroom.set('classroomCode', params.classroom_code)
     App.NoteView.listenForKeystroke()
-    return App.FolderModel
+    return App.Classroom
   },
   actions: {
     toggleFolder: function(object) {
