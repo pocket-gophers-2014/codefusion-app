@@ -16,14 +16,15 @@ body, html {
 
 .body {
   padding-bottom: 50px;
-  max-width: 1200px;
+  max-width: 1400px;
   min-height: 100%;
   margin: auto;
+  border: 1px solid black;
 }
 
 header.main {
   text-align: center;
-  height: 150px;
+  height: 75px;
 }
 
 header.main a {
@@ -34,7 +35,7 @@ header.main a {
 
 header.main h1 {
   font-size: 4em;
-  margin-bottom: 0;
+  margin: 20px 0 0 0;
 }
 
 footer {
@@ -62,10 +63,20 @@ footer p {
   vertical-align: top;
 }
 
-.column {
-  text-align: center;
+.col1, .col3 {
+  display: inline-block;
+}
+
+.col1 {
+/*  text-align: center;
   height: 100%;
-  margin: auto;
+  margin: auto;*/
+  width: 25%;
+}
+
+.col3 {
+  vertical-align: top;
+  width: 70%;
 }
 
 article {

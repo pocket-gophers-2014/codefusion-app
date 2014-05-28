@@ -65,11 +65,15 @@
   </script>
 
   <script type="text/x-handlebars" id='classroom'>
-    {{#with model.content}}
-      {{partial "_subFolders" }}
-    {{/with}}
+    <section class="folder-nav col1">
+      {{#with model.content}}
+        {{partial "_subFolders" }}
+      {{/with}}
+    </section>
 
-    {{outlet}}
+    <section class="page-content col3">
+      {{outlet}}
+    </section>
   </script>
 
   <script type="text/x-handlebars" id="_subFolders">
@@ -91,32 +95,26 @@
   </script>
 
   <script type="text/x-handlebars" id="file">
-    {{partial "code-view"}}
-    {{partial "note-view"}}
+    <article class="code-view text-area file">
+      <table class="code-table">
+        <tbody>
+          <tr>
+            {{partial "code-view"}}
+          </tr>
+          <tr>
+            {{ partial "note-view"}}
+          </tr>
+        </tbody>
+      </table>
+    </article>
   </script>
 
   <script type="text/x-handlebars" data-template-name="_code-view">
-    <article class="code-view text-area file" > Teacher Code
-        <table class="code-table">
-          <tbody>
-            <tr>
-              <td class="code"><pre id="code" class="prettyprint">{{model.fileContent}}</pre></td>
-            </tr>
-          </tbody>
-        </table>
-    </article>
+    <td class="code"><pre id="code" class="prettyprint">{{model.fileContent}}</pre></td>
   </script>
 
   <script type="text/x-handlebars" data-template-name="_note-view">
-    <article class="note-view text-area file" > Your Notes
-        <table class="note-table">
-          <tbody>
-            <tr>
-              <td class="code"><pre class="prettyprint"><textarea id="note-area" class="notes" placeholder="Type your notes here..."></textarea></pre></td>
-            </tr>
-          </tbody>
-        </table>
-    </article>
+    <td class="code"><pre class="prettyprint"><textarea id="note-area" class="notes" placeholder="Type your notes here..."></textarea></pre></td>
   </script>
 
 </body>
