@@ -11,6 +11,10 @@ App.ClassroomRoute = Ember.Route.extend({
       var target = $('#' + filtered)
       target.toggle()
       $(event.target).toggleClass('closed')
+  },
+  actions: {
+    download: function(){
+      saveAs(App.Classroom.asZipDirectory().generate({type:'blob'}), App.Classroom.classroomCode)
     }
   }
 });
