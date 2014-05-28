@@ -55,11 +55,11 @@
   </script>
 
   <script type="text/x-handlebars" id='index'>
-    <section>
-      <article>
-        <form {{ action "redirectToClassroom" classroomCode on="submit" }}>
-          <h4>Enter Classroom Code:</h4>
-          {{input type="text" value=classroomCode}}
+    <section >
+      <article id="searchbar">
+        <form id="search" {{ action "redirectToClassroom" classroomCode on="submit" }}>
+         {{input type="text" value=classroomCode class="searchForm" placeholder="Search by classroom code.. "}}
+          <input type='image' value="Search" src="css/img/searchbar.png" id="searchimage"/>
         </form>
       </article>
     </section>
