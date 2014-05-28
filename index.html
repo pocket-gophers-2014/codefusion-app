@@ -31,9 +31,11 @@
   <script src="js/models/classroom.js"></script>
   <script src="js/models/current_file.js"></script>
   <script src="js/models/note_holder.js"></script>
-  <script src="js/models/folder.js"></script>
+  <script src="js/models/classroom_files.js"></script>
+  <script src="js/models/classroom_folders.js"></script>
   <script src="js/views/note_view.js"></script>
-  <script src="js/views/viewHelpers.js"></script>
+  <script src="js/views/handlebar_helpers.js"></script>
+  <script src="js/views/view_helpers.js"></script>
   <script src="js/views/master_view_controller.js"></script>
   <script src="js/views/prettify_view.js"></script>
 </head>
@@ -72,12 +74,12 @@
     {{fileLinkMod model.currentlyModifiedFile}}
       <div id="folder-nav">
       {{partial 'download'}}
-      {{#with model.content}}
+      {{#with model.folders}}
         {{partial "_subFolders" }}
       {{/with}}
       </div>
     </section>
-    
+
     <section class="page-content col3">
       {{outlet}}
     </section>

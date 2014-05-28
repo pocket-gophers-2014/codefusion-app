@@ -119,7 +119,7 @@ footer p {
 }
 
 .folder-node:before {
-  content: "--";
+  content: "-";
 }
 
 .folder-node.closed:before {
