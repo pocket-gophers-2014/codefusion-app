@@ -55,3 +55,8 @@
   overflow-x: scroll;
   box-sizing: border-box;
 }
+
+#files-download {
+  width: 100%;
+  background-color: green;
+}
