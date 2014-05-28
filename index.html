@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/monokai.css">
   <link rel="stylesheet" href="css/classroom.css">
-  <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700' rel='stylesheet' type='text/css'>
+  <!-- <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700' rel='stylesheet' type='text/css'> -->
 
   <!-- <script src="js/libs/jquery-1.11.1.min.js"></script> -->
   <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -15,31 +15,35 @@
   <!-- <script src="js/libs/handlebars-1.1.2.js"></script> -->
   <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
   <!-- <script src="js/libs/ember.min.js"></script> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ember.js/1.5.1/ember.min.js"></script>
-  <script src="js/libs/prettify.small.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ember.js/1.5.1/ember.min.js"></script> -->
   <script src="tests/runner.js"></script>
 
+  <script src='js/libs/ember-1.5.1.js'></script>
+  <script src='js/libs/prettify.small.js'></script>
   <script src="js/app.js"></script>
   <script src="js/routes.js"></script>
-  <script src="js/views/masterviewcontroller.js"></script>
-  <script src="js/views/classroomprettify.js"></script>
-  <script src="js/views/redirecttoclassroom.js"></script>
-  <script src="js/views/savenotes.js"></script>
-  <script src="js/views/mergednotes.js"></script>
-  <script src="js/controllers/classroomcontroller.js"></script>
-  <script src="js/controllers/classroomholdercontroller.js"></script>
-  <script src="js/controllers/firebasecontroller.js"></script>
+  <script src="js/controllers/files_controller.js"></script>
+  <script src="js/controllers/index_controller.js"></script>
+  <script src="js/controllers/classrooms_controller.js"></script>
+  <script src="js/models/firebase_api.js"></script>
   <script src="js/models/classroom.js"></script>
-  <script src="js/models/classroomholder.js"></script>
-
+  <script src="js/models/current_file.js"></script>
+  <script src="js/models/note_holder.js"></script>
+  <script src="js/views/note_view.js"></script>
+  <script src="js/views/viewHelpers.js"></script>
+  <script src="js/views/master_view_controller.js"></script>
+  <script src="js/views/prettify_view.js"></script>
 </head>
 <body>
+
   <script type="text/x-handlebars">
     <header class="main">
       <h1>{{#link-to 'index' }}codefusion.io{{/link-to}}</h1>
     </header>
     <section class="body">
+
     {{outlet}}
+
     </section>
     <footer>
     <article>
@@ -49,48 +53,54 @@
     </footer>
   </script>
 
-  <script type="text/x-handlebars" id="index">
-    <section class="content">
-      <article class="column">
-        <article id="about"><p><strong>Codefusion</strong> is an app that will change the way you share and communicate code.</p></article>
-        <article id="url-form">
-          <form>
-            <span>Enter classroom code here:</span>
-            <input type="text" name="classroom_code">
-            <input type="submit" value="Go!" {{#view App.RedirectToClassroom}} {{/view}}
-          </form>
-        </article>
+  <script type="text/x-handlebars" id='index'>
+    <section>
+      <article>
+        <form {{ action "redirectToClassroom" classroomCode on="submit" }}>
+          <h4>Enter Classroom Code:</h4>
+          {{input type="text" value=classroomCode}}
+        </form>
       </article>
     </section>
   </script>
 
+  <script type="text/x-handlebars" id='classroom'>
+    {{#with model.content}}
+      {{partial "_subFolders" }}
+    {{/with}}
 
-  <script type="text/x-handlebars" data-template-name="classrooms">
-      {{ partial 'saveform'}}
-      <h2>classroom_code: {{classroom_code}}</h2>
-
-      <section class="classroom-text">
-        {{ partial 'code-view' }}
-        {{ partial 'note-view' }}
-        {{ partial 'merged-view' }}
-      </section>
-
+    {{outlet}}
   </script>
 
-  <script type="text/x-handlebars" data-template-name='_saveform'>
-      {{input id='saveform' placeholder=file_name}}
+  <script type="text/x-handlebars" id="_subFolders">
+    <ul>
+      <li id="folder-{{unbound id}}"  > {{folder_name}} </li>
+      <ul>
+      {{#each this.files }}
+        <li>{{fileLinkMod file_name}}</li>
+      {{/each}}
+      </ul>
+      {{#if folders}}
+        {{#each i in folders}}
+          {{#with i}}
+            {{partial "_subFolders" }}
+         {{/with}}
+        {{/each}}
+      {{/if}}
+    </ul>
+  </script>
 
-      <input type="button" value="Save Code with Notes" {{#view App.SaveNotesOnClick}} {{/view}}
-
+  <script type="text/x-handlebars" id="file">
+    {{partial "code-view"}}
+    {{partial "note-view"}}
   </script>
 
   <script type="text/x-handlebars" data-template-name="_code-view">
     <article class="code-view text-area file" > Teacher Code
         <table class="code-table">
           <tbody>
-
             <tr>
-              <td class="code"><pre id="code" class="prettyprint">{{file_content}}</pre></td>
+              <td class="code"><pre id="code" class="prettyprint">{{model.fileContent}}</pre></td>
             </tr>
           </tbody>
         </table>
@@ -102,25 +112,11 @@
         <table class="note-table">
           <tbody>
             <tr>
-              <td class="code"><pre class="prettyprint"><textarea id="note" class="notes" placeholder="Type your notes here..."></textarea></pre></td>
+              <td class="code"><pre class="prettyprint"><textarea id="note-area" class="notes" placeholder="Type your notes here..."></textarea></pre></td>
             </tr>
           </tbody>
         </table>
     </article>
   </script>
-
-  <script type="text/x-handlebars" data-template-name="_merged-view" >
-    <article class="note-view text-area file" > Code with Notes
-        <table class="note-table">
-          <tbody>
-            <tr>
-              <td class="code"><pre id="mergedcontent" class="prettyprint">{{view.mergedContent}}</pre></td>
-            </tr>
-          </tbody>
-        </table>
-    </article>
-  </script>
-
 
 </body>
-</html>
