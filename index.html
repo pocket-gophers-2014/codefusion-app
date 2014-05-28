@@ -66,6 +66,7 @@
   </script>
 
   <script type="text/x-handlebars" id='classroom'>
+    {{partial 'download'}}
     <section class="folder-nav col1">
       <div id="folder-nav">
       {{#with model.content}}
@@ -73,7 +74,7 @@
       {{/with}}
       </div>
     </section>
-
+    
     <section class="page-content col3">
       {{outlet}}
     </section>
@@ -120,6 +121,10 @@
 
   <script type="text/x-handlebars" data-template-name="_note-view">
     <td class="code"><pre class="prettyprint"><textarea id="note-area" class="notes" placeholder="Type your notes here..."></textarea></pre></td>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="_download">
+    <button {{action 'download'}}>Download as Zip</button>
   </script>
 
 </body>
