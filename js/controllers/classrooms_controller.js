@@ -10,6 +10,7 @@ App.ClassroomRoute = Ember.Route.extend({
       filtered = object.replace(/\//g, "-")
       var target = $('#' + filtered)
       target.toggle()
+      $(event.target).toggleClass('closed')
     }
   }
 });

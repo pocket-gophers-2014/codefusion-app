@@ -75,11 +75,11 @@
 
   <script type="text/x-handlebars" id="_subFolders">
     <ul>
-      <li {{action toggleFolder folder_name}} > {{folderNameFilter folder_name}} </li>
+      <li class="folder-node closed" {{action toggleFolder folder_name}} > {{folderNameFilter folder_name}} </li>
       {{collapsableFolderFilter folder_name}}
         <ul>
         {{#each this.files }}
-          <li>{{fileLinkMod file_name}}</li>
+          <li class="file-node">{{fileLinkMod file_name}}</li>
         {{/each}}
         </ul>
         {{#if folders}}
