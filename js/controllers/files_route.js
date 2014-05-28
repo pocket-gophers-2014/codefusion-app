@@ -1,12 +1,8 @@
 App.ClassroomRoute = Ember.Route.extend({
-  beforeModel: function(params){
-    // var firebaseAPI = new App.FirebaseAPI
-    App.FirebaseAPI.initClassroomChangeListener(params.classroom_code)
-  },
-
   model: function(params) {
     console.log("classroom model!")
-    // debugger
+    console.log(params)
+    App.FirebaseAPI.initClassroomChangeListener(params.classroom_code)
     App.Classroom.set('classroomCode', params.classroom_code)
     return App.Classroom
   }

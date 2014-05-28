@@ -8,22 +8,19 @@ App.FirebaseAPI = {
       data.forEach(function(classroom) {
         App.FirebaseAPI.checkRoomMatch(classroom, classroom_code)
       })
-      // App.FirebaseAPI.setCurrentClassroomListener(currentClassroomUUID)
     })
-    // return something that will flag redirect if UUID is not found
   },
 
-  checkRoomMatch: function(classroom, classroom_code) {
-    if (classroom.val().classroom_code === classroom_code) {
-      var UUID = classroom.hc.path.m[1]
-      App.FirebaseAPI.setCurrentClassroomListener(UUID)
+  checkRoomMatch: function(classroom, params) {
+    if (classroom.val().classroom_code === params) {
+      var fireBaseUID = classroom.hc.path.m[1]
+      App.FirebaseAPI.setCurrentClassroomListener(fireBaseUID)
     }
   },
 
   setCurrentClassroomListener: function(currentClassroomUUID) {
     var response =  new Firebase(this.dataBaseLocation + currentClassroomUUID)
     response.on("value", function(data) {
-      // debugger
       App.Classroom.set('content', data.val().content)
     });
   }

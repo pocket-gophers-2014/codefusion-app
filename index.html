@@ -59,7 +59,9 @@
 
   <script type="text/x-handlebars" id='classroom'>
     <p>hi classroom id!</p>
-    {{model.content}}
+    {{#each model.content.files}}
+      {{this.file_name}}
+    {{/each}}
   </script>
 
   <script type="text/x-handlebars" id='files'>
