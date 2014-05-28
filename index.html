@@ -21,9 +21,12 @@
   <script src='js/libs/ember-1.5.1.js'></script>
   <script src="js/app.js"></script>
   <script src="js/routes.js"></script>
-  <script src="js/controllers/files_route.js"></script>
+  <script src="js/controllers/files_controller.js"></script>
   <script src="js/controllers/index_controller.js"></script>
-  <script src="js/controllers/firebase_api.js"></script>
+  <script src="js/controllers/classrooms_controller.js"></script>
+  <script src="js/models/firebase_api.js"></script>
+  <script src="js/models/classroom.js"></script>
+  <script src="js/models/current_file.js"></script>
   <script src="js/views/viewHelpers.js"></script>
 </head>
 <body>
@@ -59,11 +62,6 @@
   </script>
 
   <script type="text/x-handlebars" id='classroom'>
-    <p>hi classroom id!</p>
-    {{#each model.content.files}}
-      {{this.file_name}}
-    {{/each}}
-
     {{#with model.content}}
       {{partial "_subFolders" }}
     {{/with}}
