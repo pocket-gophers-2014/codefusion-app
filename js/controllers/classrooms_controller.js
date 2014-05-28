@@ -7,10 +7,7 @@ App.ClassroomRoute = Ember.Route.extend({
   },
   actions: {
     toggleFolder: function(object) {
-      filtered = object.replace(/\//g, "\\+")
-      $('#' + filtered).toggle()
-      if (event != undefined) {
-        $(event.target).toggleClass('closed')
+      App.View.toggleFolder(object,event)
     },
     download: function(){
       saveAs(App.Classroom.asZipDirectory().generate({type:'blob'}), App.Classroom.classroomCode)
