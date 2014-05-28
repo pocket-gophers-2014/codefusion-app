@@ -33,7 +33,11 @@ Ember.Handlebars.helper('folderNameFilter', function(value, options) {
 
 Ember.Handlebars.helper('prettifyCode', function(value, options) {
   if (value !== 'Content loading...') {
-    var preTaggedCode = new Ember.Handlebars.SafeString("<pre id='code' class='prettyprint linenums'>" + value + "</pre>")
+    // var preTaggedCode = new Ember.Handlebars.SafeString("<pre id='code' class='prettyprint linenums'>" + value + "</pre>")
+    // NOTE: because we're using the SafeString method, we cannot put the value back into the pre tags, otherwise HTML files and script files will be executed.
+    // To solve this, I modifed PrettifyView to inject current content prior to prettifying. This is not a very elegant solution, but it works for.
+    // Ideal solution is to fix this helper method to inject the explicit value (code) into the new pre tags, not as a "safe string"
+    var preTaggedCode = new Ember.Handlebars.SafeString("<pre id='code' class='prettyprint linenums'></pre>")
     return preTaggedCode
   } else {
     return value
