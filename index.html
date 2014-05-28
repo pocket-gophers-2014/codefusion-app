@@ -15,12 +15,15 @@
   <!-- <script src="js/libs/handlebars-1.1.2.js"></script> -->
   <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
   <!-- <script src="js/libs/ember.min.js"></script> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ember.js/1.5.1/ember.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ember.js/1.5.1/ember.min.js"></script> -->
   <script src="tests/runner.js"></script>
 
+  <script src='js/libs/ember-1.5.1.js'></script>
   <script src="js/app.js"></script>
   <script src="js/routes.js"></script>
-  <script src="js/controllers/indexController.js"></script>
+  <script src="js/controllers/files_route.js"></script>
+  <script src="js/controllers/index_controller.js"></script>
+  <script src="js/controllers/firebase_api.js"></script>
 </head>
 <body>
 
@@ -46,12 +49,21 @@
       <article>
         <form {{ action "redirectToClassroom" classroom_id on="submit" }}>
           <h4>Enter Classroom Code:</h4>
-          {{classroom_id}}
+          {{classroom_code}}
           <br>
-          {{input type="text" value=classroom_id}}
+          {{input type="text" value=classroom_code}}
         </form>
       </article>
     </section>
+  </script>
+
+  <script type="text/x-handlebars" id='classroom'>
+    <p>hi classroom id!</p>
+    {{model.content}}
+  </script>
+
+  <script type="text/x-handlebars" id='files'>
+    <p>hi files id!</p>
   </script>
 
 </body>

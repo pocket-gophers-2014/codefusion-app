@@ -1,3 +1,28 @@
+App.ClassroomRoute = Ember.Route.extend({
+  beforeModel: function(params){
+    // var firebaseAPI = new App.FirebaseAPI
+    App.FirebaseAPI.initClassroomChangeListener(params.classroom_code)
+  },
+
+  model: function(params) {
+    console.log("classroom model!")
+    // debugger
+    App.Classroom.set('classroomCode', params.classroom_code)
+    return App.Classroom
+  }
+});
+
+App.FilesRoute = Ember.Route.extend({
+  model: function() {
+
+  }
+});
+
+App.Classroom = Ember.Object.extend({
+  content: null,
+  classroomCode: null
+}).create();
+
 // App.FilesRoute = Ember.Route.extend({
 //   model: function() {
 //     return App.CurrentClassroom

@@ -1,3 +1,39 @@
+App.FirebaseAPI = {
+  dataBaseLocation: "https://radiant-fire-3325.firebaseio.com/classrooms/",
+
+  initClassroomChangeListener: function(classroom_code) {
+    var currentClassroomUUID
+    new Firebase(this.dataBaseLocation)
+    .once("value", function(data) {
+      data.forEach(function(classroom) {
+        App.FirebaseAPI.checkRoomMatch(classroom, classroom_code)
+      })
+      // App.FirebaseAPI.setCurrentClassroomListener(currentClassroomUUID)
+    })
+    // return something that will flag redirect if UUID is not found
+  },
+
+  checkRoomMatch: function(classroom, classroom_code) {
+    if (classroom.val().classroom_code === classroom_code) {
+      var UUID = classroom.hc.path.m[1]
+      App.FirebaseAPI.setCurrentClassroomListener(UUID)
+    }
+  },
+
+  setCurrentClassroomListener: function(currentClassroomUUID) {
+    var response =  new Firebase(this.dataBaseLocation + currentClassroomUUID)
+    response.on("value", function(data) {
+      // debugger
+      App.Classroom.set('content', data.val().content)
+    });
+  }
+};
+
+// App.FireBaseController = Ember.Controller.extend({
+//   dataBaseLocation: "https://radiant-fire-3325.firebaseio.com/classrooms/",
+
+// })
+
 // App.FireBaseController = Ember.Controller.extend({
 //   dataBaseLocation: "https://radiant-fire-3325.firebaseio.com/classrooms/", // need to investigate security..
 //   singleRequest: function(params) {
