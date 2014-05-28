@@ -20,6 +20,8 @@
 
   <script src='js/libs/ember-1.5.1.js'></script>
   <script src='js/libs/prettify.small.js'></script>
+  <script src="js/libs/jszip.js"></script>
+  <script src="js/libs/filesaver.js"></script>
   <script src="js/app.js"></script>
   <script src="js/routes.js"></script>
   <script src="js/controllers/files_controller.js"></script>
@@ -68,12 +70,13 @@
   <script type="text/x-handlebars" id='classroom'>
     <section class="folder-nav col1">
       <div id="folder-nav">
+      {{partial 'download'}}
       {{#with model.content}}
         {{partial "_subFolders" }}
       {{/with}}
       </div>
     </section>
-
+    
     <section class="page-content col3">
       {{outlet}}
     </section>
@@ -120,6 +123,10 @@
 
   <script type="text/x-handlebars" data-template-name="_note-view">
     <td class="code"><pre class="prettyprint"><textarea id="note-area" class="notes" placeholder="Type your notes here..."></textarea></pre></td>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="_download">
+    <button {{action 'download'}}>Download as Zip</button>
   </script>
 
 </body>
