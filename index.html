@@ -68,9 +68,9 @@
   </script>
 
   <script type="text/x-handlebars" id='classroom'>
-    {{partial 'download'}}
     <section class="folder-nav col1">
       <div id="folder-nav">
+      {{partial 'download'}}
       {{#with model.content}}
         {{partial "_subFolders" }}
       {{/with}}
