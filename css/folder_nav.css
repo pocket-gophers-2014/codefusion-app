@@ -1,0 +1,61 @@
+.nav-wrapper {
+  display: table;
+  border-collapse: collapse;
+}
+
+.folder-node, .file-node {
+  list-style: none;
+  text-overflow: visible;
+}
+
+.folder-node:hover, .file-node:hover {
+  font-weight: bold;
+}
+
+.folder-node {
+  font-weight: italic;
+  cursor: w-resize;
+}
+
+.folder-node:before {
+  content: "--";
+}
+
+.folder-node.closed:before {
+  content: "+";
+}
+
+.folder-node.closed {
+  cursor: s-resize;
+}
+
+.sub-directory {
+  display: none;
+}
+
+.file-node a:link, a:visited {
+  color:black;
+  text-decoration: none
+}
+
+.file-node {
+  font-size: 0.8em;
+}
+
+.file-node a:active {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+#folder-nav {
+  /*position: fixed;*/
+  height: 90%;
+  width: 20%;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  border: 5px solid grey;
+  padding: 0;
+  border-radius: 10px;
+  display: table-cell;
+  box-sizing: border-box;
+}

@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/monokai.css">
   <link rel="stylesheet" href="css/classroom.css">
+  <link rel="stylesheet" href="css/folder_nav.css">
   <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700' rel='stylesheet' type='text/css'>
 
   <!-- <script src="js/libs/jquery-1.11.1.min.js"></script> -->
@@ -38,9 +39,6 @@
 <body>
 
   <script type="text/x-handlebars">
-    <header class="main">
-      <h1>{{#link-to 'index' }}codefusion.io{{/link-to}}</h1>
-    </header>
     <section class="body">
 
     {{outlet}}
@@ -48,13 +46,16 @@
     </section>
     <footer>
     <article>
-      <p><strong>codefusion.io</strong> is made for the people, by the people</p>
+      <p><strong>{{#link-to 'index' }}codefusion.io{{/link-to}}</strong> is made for the people, by the people</p>
       <a href="https://github.com/pocket-gophers-2014/codefusion-app" target="_blank"><img src='css/img/GitHub-Mark-32px.png'></a>
       </article>
     </footer>
   </script>
 
   <script type="text/x-handlebars" id='index'>
+    <header class="main">
+      <h1>{{#link-to 'index' }}codefusion.io{{/link-to}}</h1>
+    </header>
     <section>
       <article>
         <form {{ action "redirectToClassroom" classroomCode on="submit" }}>
@@ -66,16 +67,20 @@
   </script>
 
   <script type="text/x-handlebars" id='classroom'>
-    <section class="folder-nav col1">
-      <div id="folder-nav">
-      {{#with model.content}}
-        {{partial "_subFolders" }}
-      {{/with}}
-      </div>
-    </section>
+    <section class="body">
+      <section class="folder-nav col1">
+        <article class="nav-wrapper">
+        <div id="folder-nav">
+        {{#with model.content}}
+          {{partial "_subFolders" }}
+        {{/with}}
+        </div>
+        </article>
+      </section>
 
-    <section class="page-content col3">
-      {{outlet}}
+      <section class="page-content col3">
+        {{outlet}}
+      </section>
     </section>
   </script>
 
