@@ -18,7 +18,7 @@ Ember.Handlebars.helper('folderNameFilter', function(value, options) {
 
 Ember.Handlebars.helper('collapsableFolderFilter', function(value, options) {
   if (value) {
-    filteredURL = value.replace(/\//g, "-")
+    filteredURL = value.replace(/\//g, "+")
     return new Ember.Handlebars.SafeString('<div class="sub-directory" id=' + filteredURL + ">")
   }
 })
