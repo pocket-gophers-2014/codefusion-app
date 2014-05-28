@@ -7,24 +7,24 @@ App.Classroom = Ember.Object.extend({
     var folderName = this.content.folder_name
 
     var zip = new JSZip();
+
     zip = zip.folder(folderName)
-    zip = this.buildFiles(zip, files)
-    zip = this.buildFolders(zip, folders)
+    this.buildFiles(zip, files)
+    this.buildFolders(zip, folders)
     return zip
   },
   buildFolders: function(zip, folders){
     if(folders){
       folders.forEach(function(subFolder){
-        zip = zip.folder(subFolder.folder_name)
-        this.buildFiles(zip, subFolder.files)
+        var zipSubFolder = zip.folder(this.truncateFolderName(subFolder.folder_name))
+        this.buildFiles(zipSubFolder, subFolder.files)
         if(subFolder.folders !== undefined){ //if it has subfolders, build them
-          this.buildFolders(zip, subFolder.folders)
+          this.buildFolders(zipSubFolder, subFolder.folders)
         }
       }, this)
     }
     return zip
   },
-
   buildFiles: function(zip, files){
     if(files){
       files.forEach(function(file){
@@ -32,5 +32,8 @@ App.Classroom = Ember.Object.extend({
       }, this)
     }
     return zip
+  },
+  truncateFolderName: function(folderName){
+    return folderName.slice(folderName.lastIndexOf('/') + 1, 500)
   }
 }).create();
