@@ -3,13 +3,10 @@ App.NoteView = Ember.View.extend({
   listenForKeystroke: function(){
     document.onkeyup = this.saveNote.bind(this) //Isolate this to keystrokes done INSIDE the textarea, not anywhere else
   },
-  saveNote: function(newFileId){
+  saveNote: function(){
     var noteContent = $('#note-area').val()
-    console.log("Inside saveNote. noteContent: " + noteContent)
     if(noteContent){
-      var urlParts = window.location.hash.split('/')
-      oldFileId = urlParts[urlParts.length - 1]
-      App.NoteHolder.notes[oldFileId] = noteContent
+      App.NoteHolder.notes[App.CurrentFile.fileName] = noteContent
     }
   },
   setNoteView: function(noteContent){

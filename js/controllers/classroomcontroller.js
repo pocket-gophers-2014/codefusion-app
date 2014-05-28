@@ -8,7 +8,7 @@ App.ClassroomsRoute = Ember.Route.extend({
 App.ClassroomRoute = Ember.Route.extend({
   model: function(params) {
     App.FireBaseController.singleRequest(params["classroom_id"])
-    App.NoteView.listenForKeystroke()
+    App.NoteView.listenForKeystroke() //NOTES PERSISTENCE
   },
   actions: {
     toggleFolder: function(object) {
