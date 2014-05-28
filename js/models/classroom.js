@@ -1,16 +1,12 @@
 App.Classroom = Ember.Object.extend({
   content: null,
   classroomCode: null,
-  files: {},
-  currentlyModifiedFile: "loading..",
-  updateRoomFiles: function(fileName, fileContent) {
-    if (this.files[fileName] === undefined) {
-      this.files[fileName] = fileContent
-    }
-    if (this.files[fileName] != fileContent) {
-      App.FolderModel.set('currentlyModifiedFile', fileName)
-    }
-    this.files[fileName] = fileContent
+  folders: {folder_name: "Loading your directory..."},
+  currentlyModifiedFile: "listening..",
+
+
+
+
   asZipDirectory: function(){
     var files = this.content.files
     var folders = this.content.folders
