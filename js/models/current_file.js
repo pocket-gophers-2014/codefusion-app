@@ -3,7 +3,9 @@ App.CurrentFile = Ember.Object.extend({
   fileName: null,
 
   parseNewContent: function(allFileData) {
-    if (allFileData) { App.CurrentFile.checkFiles(allFileData) }
+    if (allFileData) {
+      App.CurrentFile.checkFiles(allFileData)
+    }
   },
 
   checkFiles: function(parentFolder) {

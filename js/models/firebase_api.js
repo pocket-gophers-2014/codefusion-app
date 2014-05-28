@@ -2,7 +2,6 @@ App.FirebaseAPI = {
   dataBaseLocation: "https://radiant-fire-3325.firebaseio.com/classrooms/",
 
   initClassroomChangeListener: function(classroom_code) {
-    var currentClassroomUUID
     new Firebase(this.dataBaseLocation)
     .once("value", function(data) {
       data.forEach(function(classroom) {
@@ -12,9 +11,10 @@ App.FirebaseAPI = {
   },
 
   checkRoomMatch: function(classroom, params) {
+    // rename params for classroomCode
     if (classroom.val().classroom_code === params) {
-      var fireBaseUID = classroom.hc.path.m[1]
-      App.FirebaseAPI.setCurrentClassroomListener(fireBaseUID)
+      var fireBaseUUID = classroom.hc.path.m[1]
+      App.FirebaseAPI.setCurrentClassroomListener(fireBaseUUID)
     }
   },
 

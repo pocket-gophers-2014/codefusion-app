@@ -6,7 +6,12 @@ App.FileRoute = Ember.Route.extend({
     App.CurrentFile.parseNewContent(App.Classroom.content)
   },
 
-  model: function() {
+  model: function(params) {
+    App.NoteView.setCurrentNote()
     return App.CurrentFile
+  },
+
+  afterModel: function() {
+    App.MasterViewController.refreshView()
   }
 });
