@@ -1,0 +1,92 @@
+.ember-application {
+  background: #FFF;
+  font-family: 'Source Code Pro';
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/*Header styling*/
+header.main {
+  text-align: center;
+  height: 75px;
+}
+
+header.main a {
+  font-weight: normal;
+  color: #000;
+  text-decoration: none;
+}
+
+header.main h1 {
+  font-size: 4em;
+  margin: 20px 0 0 0;
+}
+
+/*Footer styling*/
+footer {
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 10%;
+  min-height: 50px;
+  background: grey;
+  border-top: 1px solid white;
+}
+
+footer p, footer a {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+}
+
+footer img {
+  vertical-align: middle;
+}
+
+footer article {
+  margin-top: 20px;
+}
+
+.classroom-wrapper {
+  background: #f2f3f7;
+  position: fixed;
+  height: 90%;
+  width: 100%;
+}
+
+.folder-nav-wrapper {
+  display: inline-block;
+  width: 20%;
+  height: 100%;
+}
+
+.code-view-wrapper {
+  display: inline-block;
+  width: 80%;
+  margin-left: -10px;
+  height: 100%;
+  vertical-align: top;
+}
+
+@media (max-width: 600px) {
+  footer p#blurb {
+    display: none;
+  }
+}
+
+@media (max-height: 700px) {
+  footer article {
+    margin-top: 10px;
+  }
+}
+
+@media (max-height: 500px) {
+  footer article {
+    margin-top: 5px;
+  }
+}
