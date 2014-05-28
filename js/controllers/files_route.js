@@ -1,16 +1,13 @@
 App.ClassroomRoute = Ember.Route.extend({
   model: function(params) {
-    console.log("classroom model!")
-    console.log(params)
     App.FirebaseAPI.initClassroomChangeListener(params.classroom_code)
     App.Classroom.set('classroomCode', params.classroom_code)
     return App.Classroom
-  }
-});
+  },
 
-App.FilesRoute = Ember.Route.extend({
-  model: function() {
-
+  afterModel: function() {
+    // this.transitionTo('files')
+    // this breaks detail route, fix later
   }
 });
 
@@ -19,40 +16,47 @@ App.Classroom = Ember.Object.extend({
   classroomCode: null
 }).create();
 
-// App.FilesRoute = Ember.Route.extend({
-//   model: function() {
-//     return App.CurrentClassroom
-//   }
-// })
+App.FileRoute = Ember.Route.extend({
+  beforeModel: function(params) {
+    console.log("In beforeModel")
+    var preURL = '/classrooms/' + App.Classroom.classroomCode + '/files/'
+    var formattedFileName = params.intent.url.replace(preURL, "")
+    App.CurrentFile.set('fileName', formattedFileName)
+    debugger
+  },
 
-// // App.FileRoute = Ember.Route.extend({
-// //   model: function(params) {
-// //     // debugger
-// //     // return App.FileHolder.findBy('file_name', params.file_id)
-// //     debugger
-// //     return App.FileHolder[1]
-// //   },
+  model: function() {
+    return App.CurrentFile
+  }
+});
 
-// //   afterModel: function() {
-// //     console.log("updated")
-// //     App.MasterViewController.refreshView()
-// //   },
+App.CurrentFile = Ember.Object.extend({
+  fileContent: "something",
+  fileName: null,
 
-// //   modelUpdate: function(a) {
-// //     console.log(a)
-// //     console.log("here")
-// //     if (a.context) {
-// //       var file_name = a.context.file_name
-// //       this.currentModel = App.FileHolder.findBy('file_name', file_name)
-// //       // this.currentModel = holder
-// //       // the right view.rerender()
-// //       // debugger
-// //     }
-// //   }.observes('App.FileHolder.content')
-// // })
+  parseNewContent: function(allFileData) {
+    App.CurrentFile.checkFiles(allFileData)
+  },
 
-// App.FileRoute = Ember.Route.extend({
-//   model: function(params) {
-//     return this.store.find("file", params.file_id)
-//   }
-// })
+  checkFiles: function(parentFolder) {
+    if (parentFolder.files !== undefined) {
+      for (var i = 0; i < parentFolder.files.length; i++) {
+        var iterFileName = parentFolder.files[i].file_name.replace(/\//g, "+")
+        if (iterFileName == App.CurrentFile.fileName) {
+          console.log("this should be the right file...")
+          App.CurrentFile.set('fileContent', parentFolder.files[i].file_content)
+        }
+      }
+    }
+
+    if (parentFolder.folders !== undefined) {
+      App.CurrentFile.cycleFolders(parentFolder.folders)
+    }
+  },
+
+  cycleFolders: function(folder) {
+    for (var i = 0; i < folder.length; i ++) {
+      App.CurrentFile.checkFiles(folder[i])
+    }
+  }
+}).create();
