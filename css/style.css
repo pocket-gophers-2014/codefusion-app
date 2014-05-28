@@ -77,9 +77,9 @@ footer p {
   width: 70%;
 }
 
-
 .folder-node, .file-node {
   list-style: none;
+  text-overflow: visible;
 }
 
 .folder-node:hover, .file-node:hover {
@@ -88,45 +88,53 @@ footer p {
 
 .folder-node {
   font-weight: italic;
-}
-
-/*.folder-node:hover {
-  cursor: e-resize;
-}*/
-
-.file-node {
-  font-size: 0.8em;
+  cursor: w-resize;
 }
 
 .folder-node:before {
   content: "--";
 }
 
-.closed:before {
-  list-style: none;
+.folder-node.closed:before {
   content: "+";
 }
 
-.closed:hover: {
+.folder-node.closed {
   cursor: s-resize;
-}
-
-a:link {
-  color:black;
-  text-decoration: none
-}
-
-a:visited {
-  color:black;
-}
-
-a:active {
-  font-weight: bold;
-  font-size: 1.1em;
 }
 
 .sub-directory {
   display: none;
+}
+
+.file-node a:link, a:visited {
+  color:black;
+  text-decoration: none
+}
+
+.file-node {
+  font-size: 0.8em;
+}
+
+.file-node a:active {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+/*.folder-nav {
+  height: auto;
+}*/
+
+
+#folder-nav {
+  position: absolute;
+  height: 90%;
+  width: 17%;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  border: 5px solid grey;
+  margin: 0;
+  padding: 0;
 }
 
 article {
