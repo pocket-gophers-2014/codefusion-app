@@ -9,8 +9,18 @@ App.Classroom = Ember.Object.extend({
     var zip = new JSZip();
 
     zip = zip.folder(folderName)
+    this.cumulativeNotes(zip)
     this.buildFiles(zip, files)
     this.buildFolders(zip, folders)
+    return zip
+  },
+  cumulativeNotes: function(zip){
+    var cumulativeNoteString = ""
+    var notes = App.NoteHolder.notes
+    for (var note in notes){
+      cumulativeNoteString += ("--------" + note + "\n" + notes[note] + '\n\n')
+    }
+    zip.file(App.Classroom.classroomCode + "_notes.txt", cumulativeNoteString)
     return zip
   },
   buildFolders: function(zip, folders){
