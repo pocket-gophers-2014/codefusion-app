@@ -68,6 +68,45 @@ footer p {
   margin: auto;
 }
 
+
+.folder-node, .file-node {
+  list-style: none;
+}
+.folder-node {
+  font-weight: bold;
+}
+
+.file-node {
+  font-size: 0.8em;
+}
+
+.folder-node:before {
+  content: "--";
+}
+
+.closed:before {
+  list-style: none;
+  content: "+";
+}
+
+
+a:link {
+  color:black;
+  text-decoration: none
+}
+
+a:visited {
+  color:black;
+}
+
+a:active {
+  font-weight: bold;
+}
+
+.sub-directory {
+  display: none;
+}
+
 article {
   vertical-align: top;
 }

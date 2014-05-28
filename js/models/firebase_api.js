@@ -17,12 +17,12 @@ App.FirebaseAPI = {
       App.FirebaseAPI.setCurrentClassroomListener(fireBaseUUID)
     }
   },
-
   setCurrentClassroomListener: function(currentClassroomUUID) {
     var response =  new Firebase(this.dataBaseLocation + currentClassroomUUID)
     response.on("value", function(data) {
       console.log("response recieved")
       App.Classroom.set('content', data.val().content)
+      App.FolderModel.checkForFileAdditionsOrRemovals(data.val().content)
       App.CurrentFile.parseNewContent(data.val().content)
     });
   }

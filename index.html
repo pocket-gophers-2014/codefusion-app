@@ -29,6 +29,7 @@
   <script src="js/models/classroom.js"></script>
   <script src="js/models/current_file.js"></script>
   <script src="js/models/note_holder.js"></script>
+  <script src="js/models/folder.js"></script>
   <script src="js/views/note_view.js"></script>
   <script src="js/views/viewHelpers.js"></script>
   <script src="js/views/master_view_controller.js"></script>
@@ -74,19 +75,21 @@
 
   <script type="text/x-handlebars" id="_subFolders">
     <ul>
-      <li id="folder-{{unbound id}}"  > {{folder_name}} </li>
-      <ul>
-      {{#each this.files }}
-        <li>{{fileLinkMod file_name}}</li>
-      {{/each}}
-      </ul>
-      {{#if folders}}
-        {{#each i in folders}}
-          {{#with i}}
-            {{partial "_subFolders" }}
-         {{/with}}
+      <li class="folder-node closed" {{action toggleFolder folder_name}} > {{folderNameFilter folder_name}} </li>
+      {{collapsableFolderFilter folder_name}}
+        <ul>
+        {{#each this.files }}
+          <li class="file-node">{{fileLinkMod file_name}}</li>
         {{/each}}
-      {{/if}}
+        </ul>
+        {{#if folders}}
+          {{#each i in folders}}
+            {{#with i}}
+              {{partial "_subFolders" }}
+           {{/with}}
+          {{/each}}
+        {{/if}}
+      </div>
     </ul>
   </script>
 
