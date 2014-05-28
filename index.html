@@ -67,9 +67,11 @@
 
   <script type="text/x-handlebars" id='classroom'>
     <section class="folder-nav col1">
+      <div id="folder-nav">
       {{#with model.content}}
         {{partial "_subFolders" }}
       {{/with}}
+      </div>
     </section>
 
     <section class="page-content col3">
