@@ -4,9 +4,16 @@ App.FirebaseAPI = {
   initClassroomChangeListener: function(classroom_code) {
     new Firebase(this.dataBaseLocation)
     .once("value", function(data) {
+      var badUrl=false
+      var numMatches=0
       data.forEach(function(classroom) {
-        App.FirebaseAPI.checkRoomMatch(classroom, classroom_code)
+        numMatches=numMatches+App.FirebaseAPI.checkRoomMatch(classroom, classroom_code)
       })
+
+      if (numMatches<1){
+       document.location.href = '/';
+      }
+
     })
   },
 
@@ -15,7 +22,9 @@ App.FirebaseAPI = {
     if (classroom.val().classroom_code === params) {
       var fireBaseUUID = classroom.hc.path.m[1]
       App.FirebaseAPI.setCurrentClassroomListener(fireBaseUUID)
+      return 1
     }
+    else {return 0}
   },
   setCurrentClassroomListener: function(currentClassroomUUID) {
     var response =  new Firebase(this.dataBaseLocation + currentClassroomUUID)
