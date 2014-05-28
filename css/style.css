@@ -11,7 +11,7 @@ body, html {
 
 .ember-view {
   min-height: 100%;
-  /*position: relative;*/
+  position: relative;
 }
 
 .body {
