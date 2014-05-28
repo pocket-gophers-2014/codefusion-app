@@ -4,7 +4,7 @@ App.MasterViewController = Ember.Controller.extend({
       // App.MergedContentView.renderMergedContent()
       App.PrettifyView.refresh()
     }
-    setTimeout(refresh, 1)
+    setTimeout(refresh, 2)
   },
   initializeNoteListener: function() {
     App.MergedContentView.listenForKeystroke()
