@@ -7,3 +7,27 @@ Ember.Handlebars.helper('fileLinkMod', function(value, options) {
     return new Ember.Handlebars.SafeString('<a href="' + route + '">' + showValue + '</a>')
   }
 })
+
+Ember.Handlebars.helper('folderNameFilter', function(value, options) {
+  if (value) {
+    var lastIndex = value.lastIndexOf('/')
+    var showValue = value.slice(lastIndex+1,500)
+    return showValue
+  }
+})
+
+Ember.Handlebars.helper('collapsableFolderFilter', function(value, options) {
+  if (value) {
+    filteredURL = value.replace(/\//g, "-")
+    return new Ember.Handlebars.SafeString('<div id=' + filteredURL + ">")
+  }
+})
+
+Ember.Handlebars.helper('folderNameFilter', function(value, options) {
+  if (value) {
+    var lastIndex = value.lastIndexOf('/')
+    var showValue = value.slice(lastIndex+1,500)
+    return showValue
+  }
+})
+

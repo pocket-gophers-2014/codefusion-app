@@ -7,7 +7,6 @@ App.CurrentFile = Ember.Object.extend({
       App.CurrentFile.checkFiles(allFileData)
     }
   },
-
   checkFiles: function(parentFolder) {
     if (parentFolder.files !== undefined) {
       for (var i = 0; i < parentFolder.files.length; i++) {
