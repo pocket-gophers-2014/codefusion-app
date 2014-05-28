@@ -1,0 +1,62 @@
+.nav-wrapper {
+  display: table;
+  border-collapse: collapse;
+}
+
+.folder-node, .file-node {
+  list-style: none;
+  text-overflow: visible;
+}
+
+.folder-node:hover, .file-node:hover {
+  font-weight: bold;
+}
+
+.folder-node {
+  font-weight: italic;
+  cursor: w-resize;
+}
+
+.folder-node:before {
+  content: "--";
+}
+
+.folder-node.closed:before {
+  content: "+";
+}
+
+.folder-node.closed {
+  cursor: s-resize;
+}
+
+.sub-directory {
+  display: none;
+}
+
+.file-node a:link, a:visited {
+  color:black;
+  text-decoration: none
+}
+
+.file-node {
+  font-size: 0.8em;
+}
+
+.file-node a:active {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+#folder-nav {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  box-sizing: border-box;
+}
+
+#files-download {
+  width: 100%;
+  background-color: green;
+}

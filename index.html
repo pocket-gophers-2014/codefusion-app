@@ -4,9 +4,10 @@
   <meta charset="utf-8">
   <title>codefusion.io</title>
   <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/monokai.css">
   <link rel="stylesheet" href="css/classroom.css">
+  <link rel="stylesheet" href="css/folder_nav.css">
   <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700' rel='stylesheet' type='text/css'>
 
   <!-- <script src="js/libs/jquery-1.11.1.min.js"></script> -->
@@ -42,18 +43,14 @@
 <body>
 
   <script type="text/x-handlebars">
-    <header class="main">
-      <h1>{{#link-to 'index' }}codefusion.io{{/link-to}}</h1>
-    </header>
     <section class="body">
-
-    {{outlet}}
-
+      {{outlet}}
     </section>
+
     <footer>
-    <article>
-      <p><strong>codefusion.io</strong> is made for the people, by the people</p>
-      <a href="https://github.com/pocket-gophers-2014/codefusion-app" target="_blank"><img src='css/img/GitHub-Mark-32px.png'></a>
+      <article>
+        <p id="home-link"><strong>{{#link-to 'index' }}codefusion.io{{/link-to}}</strong></p><p id="blurb">&nbsp;is made for the people, by the people</p>
+        <a href="https://github.com/pocket-gophers-2014/codefusion-app" target="_blank"><img src='css/img/GitHub-Mark-32px.png'></a>
       </article>
     </footer>
   </script>
@@ -70,18 +67,20 @@
   </script>
 
   <script type="text/x-handlebars" id='classroom'>
-    <section class="folder-nav col1">
-    {{fileLinkMod model.currentlyModifiedFile}}
-      <div id="folder-nav">
-      {{partial 'download'}}
-      {{#with model.folders}}
-        {{partial "_subFolders" }}
-      {{/with}}
-      </div>
-    </section>
 
-    <section class="page-content col3">
-      {{outlet}}
+    <section class="classroom-wrapper">
+      <article class="folder-nav-wrapper">
+        <div id="folder-nav">
+          {{partial 'download'}}
+          {{fileLinkMod model.currentlyModifiedFile}}
+          {{#with model.folders}}
+            {{partial "_subFolders" }}
+          {{/with}}
+        </div>
+      </article>
+      <article class="code-view-wrapper">
+        {{outlet}}
+      </article>
     </section>
   </script>
 
@@ -129,7 +128,6 @@
   </script>
 
   <script type="text/x-handlebars" data-template-name="_download">
-    <button {{action 'download'}}>Download as Zip</button>
+    <button id="files-download" {{action 'download'}}>Download as Zip</button>
   </script>
-
 </body>
