@@ -31,3 +31,11 @@ Ember.Handlebars.helper('folderNameFilter', function(value, options) {
   }
 })
 
+Ember.Handlebars.helper('prettifyCode', function(value, options) {
+  if (value !== 'Content loading...') {
+    var preTaggedCode = new Ember.Handlebars.SafeString("<pre id='code' class='prettyprint linenums'>" + value + "</pre>")
+    return preTaggedCode
+  } else {
+    return value
+  }
+})
