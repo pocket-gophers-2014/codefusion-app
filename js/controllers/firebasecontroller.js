@@ -21,7 +21,6 @@ App.FireBaseController = Ember.Controller.extend({
       App.FileHolder.set('content', [])
       App.CurrentClassroom.updateAttributes(data.val())
       App.FileHolder.buildFiles(data.val().content)
-      //
     })
   }
 }).create()

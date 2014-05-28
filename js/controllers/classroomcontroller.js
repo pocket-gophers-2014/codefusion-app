@@ -2,6 +2,9 @@ App.ClassroomsRoute = Ember.Route.extend({
   model: function() {
     App.MasterViewController.initializeNoteListener()
     return App.CurrentClassroom
+  },
+  afterModel: function() {
+    App.MasterViewController.refreshView()
   }
 });
 
@@ -11,7 +14,9 @@ App.ClassroomRoute = Ember.Route.extend({
   },
   actions: {
     toggleFolder: function(object) {
-      // add capability of collapsing files
+      filtered = object.replace(/\//g, "-")
+      var target = $('#' + filtered)
+      target.toggle()
     }
   }
 });
