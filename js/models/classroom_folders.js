@@ -3,27 +3,29 @@ App.ClassroomFolders = Ember.Object.extend({
   previousFileCount: 0,
   checkForFileAdditionsOrRemovals: function(folder) { // name changes.. refresh folders button?
     this.set('fileCount', 0)
-    this.checkFiles(folder)
-    // extract lines 8 - 12
+    this._countFiles(folder)
     if (this.fileCount != this.previousFileCount) {
-      this.set('previousFileCount', this.fileCount)
-      App.Classroom.set('folders', folder)
-      App.View.initializeFolderLayout()
+      this._updateAttributes(this.fileCount,folder)
     }
   },
-  checkFiles: function(parentFolder) {
+  _countFiles: function(parentFolder) {
     if (parentFolder.files !== undefined) {
       for (var i = 0; i < parentFolder.files.length; i++) {
         this.fileCount += 1
       }
     }
-    this.cycleFolders(parentFolder.folders)
+    this._cycleFolders(parentFolder.folders)
   },
-  cycleFolders: function(folder) {
+  _cycleFolders: function(folder) {
     if (folder !== undefined) {
       for (var i = 0; i < folder.length; i ++) {
-        this.checkFiles(folder[i])
+        this._checkFiles(folder[i])
       }
     }
+  },
+  _updateAttributes: function(fileCount,folder) {
+    this.set('previousFileCount', fileCount)
+    App.Classroom.set('folders', folder)
+    App.View.initializeFolderLayout()
   }
 }).create()
