@@ -12,6 +12,6 @@ App.FileRoute = Ember.Route.extend({
   },
 
   reprettify: function() {
-    App.MasterViewController.refreshView()
+    App.PrettifyView.refresh()
   }.observes('App.CurrentFile.fileContent')
 });

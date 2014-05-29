@@ -7,6 +7,7 @@ App.ClassroomFolders = Ember.Object.extend({
     if (this.fileCount != this.previousFileCount) {
       this.set('previousFileCount', this.fileCount)
       App.Classroom.set('folders', folder)
+      App.View.initializeFolderLayout()
     }
   },
   checkFiles: function(parentFolder) {

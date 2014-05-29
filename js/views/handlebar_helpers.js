@@ -23,14 +23,6 @@ Ember.Handlebars.helper('collapsableFolderFilter', function(value, options) {
   }
 })
 
-Ember.Handlebars.helper('folderNameFilter', function(value, options) {
-  if (value) {
-    var lastIndex = value.lastIndexOf('/')
-    var showValue = value.slice(lastIndex+1,500)
-    return showValue
-  }
-})
-
 Ember.Handlebars.helper('prettifyCode', function(value, options) {
   if (value !== 'Content loading...') {
     // var preTaggedCode = new Ember.Handlebars.SafeString("<pre id='code' class='prettyprint linenums'>" + value + "</pre>")
