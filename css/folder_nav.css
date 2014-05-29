@@ -51,7 +51,7 @@
 
 .file-node a:link, a:visited {
   color:black;
-  text-decoration: none
+  text-decoration: none;
 }
 
 
@@ -59,10 +59,6 @@
   font-size: 0.8em;
 }
 
-.file-node a:active {
-  font-weight: bold;
-  font-size: 1.1em;
-}
 
 #folder-nav {
   display: inline-block;
@@ -71,10 +67,6 @@
   overflow-y: scroll;
   overflow-x: scroll;
   box-sizing: border-box;
-  transition: height 2s;
-  -moz-transition: height 2s; /* Firefox 4 */
-  -webkit-transition: height 2s; /* Safari and Chrome */
-  -o-transition: height 2s; /* Opera */
 }
 
 #folder-nav ul {
@@ -82,7 +74,10 @@
   padding-left: 10px;
 }
 
-
+.highlighted {
+  background-color: lightgrey;
+  padding-right: 100%;
+}
 
 #files-download {
   font-weight: bold;

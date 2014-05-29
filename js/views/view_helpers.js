@@ -1,14 +1,23 @@
 App.View = {
   toggleFolder: function(object,event) {
     filtered = object.replace(/\//g, "\\+")
-    $('#' + filtered).toggle()
+    $('#' + filtered).toggle(300)
     if (event != undefined) {
       $(event.target).toggleClass('closed')
+    }
+  },
+  toggleFile: function() {
+    $.each($('.highlighted'), function(index, value) {
+      value.className = ""
+    })
+    if ($(event.target).is( "a" )) {
+      event.target.className = "highlighted" + event.target.className
     }
   },
   initializeFolderLayout: function() {
     setTimeout(function() {
      $('li').first().click()
+     $('ul').first().on('click',App.View.toggleFile)
     }, 2)
   },
   updateNotePane: function(currentNote) {
@@ -19,3 +28,4 @@ App.View = {
     }
   }
 }
+
