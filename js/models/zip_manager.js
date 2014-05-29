@@ -4,10 +4,10 @@ App.ZipManager = Ember.Object.extend({
     return this.makeZip(rootDirectory)
   },
   makeZip: function(rootDirectory){
-    var downloadable = buildFileStructure(rootDirectory).generate({type:'blob'}, this.nameTheZipFileName(rootDirectory))
+    var downloadable = this.buildFileStructure(rootDirectory).generate({type:'blob'}, this.nameTheZipFile(rootDirectory))
     return downloadable
   },
-  buildFileStructure: function(rootDirectory){ 
+  buildFileStructure: function(rootDirectory){
     var zip = new JSZip().folder(rootDirectory.folder_name)
     this.addCumulativeNotesToZip(zip)
     this.addFilesToZip(zip, rootDirectory.files)
@@ -20,7 +20,7 @@ App.ZipManager = Ember.Object.extend({
         var zipSubFolder = this.makeZipSubFolder(zip, subFolder)
         this.addFilesToZip(zipSubFolder, subFolder.files)
 
-        if(subFolder.folders !== undefined){ 
+        if(subFolder.folders !== undefined){
           this.addFoldersToZip(zipSubFolder, subFolder.folders)
         }
       }, this)
@@ -35,7 +35,7 @@ App.ZipManager = Ember.Object.extend({
     }
     return zip
   },
-  makeZipSubFolder: function(zip){
+  makeZipSubFolder: function(zip, subFolder){
     return zip.folder(this.truncatePathName(subFolder.folder_name))
   },
   addCumulativeNotesToZip: function(zip){
@@ -46,7 +46,7 @@ App.ZipManager = Ember.Object.extend({
     return pathName.slice(pathName.lastIndexOf('/') + 1, 500)
   },
   nameTheZipFile: function(rootDirectory){
-    return (App.Classroom.classroomCode + "_" + rootDirectory.folder_name + ".zip")
+    return (App.Classroom.classroomCode + "_" + rootDirectory.folder_name)
   },
   nameTheNotesFile: function(){
     App.Classroom.classroomCode + "_notes.txt"
