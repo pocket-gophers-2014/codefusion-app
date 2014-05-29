@@ -6,12 +6,16 @@
 
 #search {
   margin: 20% 0;
-  margin-left: 20%;
+  margin-left: 25%;
+}
+
+.searchForm {
+  margin-right: 5px;
 }
 
 #search input[type="text"] {
   border: 1px solid #d1d1d1;
-  font-size: 1em;
+  font-size: 1.2em;
   color: black;
   width: 60%;
   padding: 24px 5px;
