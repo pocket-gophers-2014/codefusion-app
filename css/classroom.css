@@ -40,6 +40,10 @@ pre.prettyprint {
   cursor: ns-resize;
 }
 
+.code-row {
+  border-bottom: 2px solid white;
+}
+
 .code-row.unsplit {
   height: 100%;
 }

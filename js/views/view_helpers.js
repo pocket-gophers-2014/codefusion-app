@@ -25,12 +25,6 @@ App.View = {
     $('.code-view hr').toggle();
     $('.code-row').toggleClass('unsplit')
   },
-  makeResizeable: function() {
-    var codeTableHeight = $('.code-table').height()
-    var maxAllowedCodeHeight = codeTableHeight * 0.8
-    $( ".code-row" ).resizable({alsoResize: ".note-row",
-                                maxHeight: maxAllowedCodeHeight}, 's');
-  },
   updateNotePane: function(currentNote) {
     if (currentNote) {
       $('#note-area').val(currentNote);

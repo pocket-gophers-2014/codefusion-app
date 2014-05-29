@@ -13,6 +13,5 @@ App.FileRoute = Ember.Route.extend({
 
   reprettify: function() {
     App.PrettifyView.refresh()
-    App.View.makeResizeable() // could put this in a better place
   }.observes('App.CurrentFile.fileContent')
 });
