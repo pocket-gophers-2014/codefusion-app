@@ -1,3 +1,6 @@
+#logo{
+  margin-top: 5%;
+}
 
 #searchbar {
   margin: auto;
@@ -13,19 +16,37 @@
   margin-right: 5px;
 }
 
+#searchimage {
+  padding-top: 15px;
+  padding-left: 8px;
+}
+
+::-webkit-input-placeholder {
+   color: white;
+   font-family: sans-serif;
+}
+
 #search input[type="text"] {
-  border: 1px solid #d1d1d1;
+  /*border: 1px solid #d1d1d1;*/
+  background-color: grey;
+  border: none;
+  font-family: sans-serif;
   font-size: 1.2em;
-  color: black;
+  color: white;
   width: 60%;
   padding: 24px 5px;
   text-align: center;
+
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+
+  /*text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;*/
+
   float: left;
+
+  color: white;
 }
