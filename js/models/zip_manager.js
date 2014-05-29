@@ -1,4 +1,3 @@
-//Replace filesaver.js and jszip with minified versions or with CDN references
 App.ZipManager = Ember.Object.extend({
   getZip: function(rootDirectory){
     return this.makeZip(rootDirectory)
