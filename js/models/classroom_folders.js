@@ -17,14 +17,13 @@ App.ClassroomFolders = Ember.Object.extend({
         this.fileCount += 1
       }
     }
-    if (parentFolder.folders !== undefined) { // move conditional to within cycle folders
-      this.cycleFolders(parentFolder.folders)
-    }
+    this.cycleFolders(parentFolder.folders)
   },
   cycleFolders: function(folder) {
-    for (var i = 0; i < folder.length; i ++) {
-      this.checkFiles(folder[i])
-      // scope of this? can be extracted into own method
+    if (folder !== undefined) {
+      for (var i = 0; i < folder.length; i ++) {
+        this.checkFiles(folder[i])
+      }
     }
   }
 }).create()
