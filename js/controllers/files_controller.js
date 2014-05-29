@@ -4,10 +4,10 @@ App.FileRoute = Ember.Route.extend({
     var formattedFileName = params.intent.url.replace(preURL, "")
     App.CurrentFile.set('fileName', formattedFileName)
     App.CurrentFile.parseForNewContent(App.Classroom.content)
+    App.NoteHolder.setCurrentNote()
   },
 
   model: function(params) {
-    App.NoteView.setCurrentNote()
     return App.CurrentFile
   },
   reprettify: function() {

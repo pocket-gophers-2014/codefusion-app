@@ -3,14 +3,13 @@ App.FirebaseAPI = {
   initClassroomChangeListener: function(classroom_code) {
     new Firebase(this.dataBaseLocation)
     .once("value", function(data) {
-      var roomMatch = false
       data.forEach(function(classroom) {
         if ( App.FirebaseAPI.checkRoomMatch(classroom, classroom_code)) {
           roomMatch = true
         }
       })
-      if (!roomMatch ){
-       document.location.href = '/'; // better way?
+      if (roomMatch !== true ){
+       document.location.href = '/';
       }
     })
   },
