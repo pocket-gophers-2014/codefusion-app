@@ -27,6 +27,10 @@ pre.prettyprint {
   overflow: auto;
 }
 
+.code-table button {
+  position: relative;
+}
+
 .notes {
   color: #FFF;
   background: #272822;
@@ -39,6 +43,15 @@ pre.prettyprint {
   height: 95%;
   width: 95%;
 }
+
+.ui-resizable-s {
+  /*position: absolute;*/
+  width: 30px;
+  height: 10px;
+  background: #f2f3f7;
+  /*bottom: 50px;*/
+  /*right: 50px;*/
+ }
 
 .code-table tr:last-child {
   border-top: 1px solid white;

@@ -10,7 +10,9 @@ App.FileRoute = Ember.Route.extend({
     App.NoteView.setCurrentNote()
     return App.CurrentFile
   },
+
   reprettify: function() {
     App.PrettifyView.refresh()
+    App.View.makeResizeable() // could put this in a better place
   }.observes('App.CurrentFile.fileContent')
 });

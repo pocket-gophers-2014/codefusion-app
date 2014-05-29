@@ -13,6 +13,7 @@
 
   <!-- <script src="js/libs/jquery-1.11.1.min.js"></script> -->
   <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
   <script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
   <!-- <script src="js/libs/handlebars-1.1.2.js"></script> -->
   <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
@@ -75,7 +76,7 @@
       <article class="folder-nav-wrapper">
         <div id="folder-nav">
           {{partial 'download'}}
-
+          <button onclick="App.View.toggleNoteView()">Notes</button>
           <div id="active-file">
             <p>Changes currently being made at..</p>
           {{fileLinkMod model.currentlyModifiedFile}}
@@ -117,10 +118,10 @@
     <article class="code-view text-area file">
       <table class="code-table">
         <tbody>
-          <tr>
+          <tr class="code-row">
             {{partial "code-view"}}
           </tr>
-          <tr>
+          <tr class="note-row">
             {{ partial "note-view"}}
           </tr>
         </tbody>
@@ -129,7 +130,8 @@
   </script>
 
   <script type="text/x-handlebars" data-template-name="_code-view">
-    <td class="code">{{prettifyCode model.fileContent}}</td>
+    <td class="code">{{prettifyCode model.fileContent}}
+    </td>
   </script>
 
   <script type="text/x-handlebars" data-template-name="_note-view">

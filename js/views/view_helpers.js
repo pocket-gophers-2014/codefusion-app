@@ -10,5 +10,14 @@ App.View = {
     setTimeout(function() {
      $('li').first().click()
     }, 2)
+  },
+  toggleNoteView: function() {
+    $('.note-row').toggle();
+  },
+  makeResizeable: function() {
+    var codeTableHeight = $('.code-table').height()
+    var maxAllowedCodeHeight = codeTableHeight * 0.8
+    $( ".code-row" ).resizable({alsoResize: ".note-row",
+                                maxHeight: maxAllowedCodeHeight}, 's');
   }
 }
