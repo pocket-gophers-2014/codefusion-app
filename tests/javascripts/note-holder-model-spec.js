@@ -1,14 +1,18 @@
-describe ( "Classroom Folders Model", function() {
+describe ( "Note Holder Model", function() {
   beforeEach(function() {
     // fileName = "gemspec"
     // content = "require version"
-    folder = { files: [0,1,2,3]}
   })
 
-  it("should have variable fileCount start as 0", function() {
-    // expect(App.ClassroomFolders.fileCount).toEqual( 0 )
+  it("should start as an empty hash", function() {
+    expect(App.NoteHolder.notes).toEqual( {} )
   })
 
+  it("should update notes when passed additional content into hash", function() {
+    App.CurrentFile.set('fileName',"gemspec")
+    App.NoteHolder.notes[App.CurrentFile.fileName] = "requirements"
+    expect(App.NoteHolder.notes["gemspec"]).toEqual( "requirements" )
+  })
 
 })
 
