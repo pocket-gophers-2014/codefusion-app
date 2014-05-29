@@ -1,8 +1,7 @@
 App.CurrentFile = Ember.Object.extend({
   fileContent: "Content loading...",
   fileName: null,
-
-  parseNewContent: function(allFileData) {
+  parseForNewContent: function(allFileData) {
     if (allFileData) {
       App.CurrentFile.checkFiles(allFileData)
     }
