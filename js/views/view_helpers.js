@@ -22,6 +22,8 @@ App.View = {
   },
   toggleNoteView: function() {
     $('.note-row').toggle();
+    $('.code-view hr').toggle();
+    $('.code-row').toggleClass('unsplit')
   },
   makeResizeable: function() {
     var codeTableHeight = $('.code-table').height()

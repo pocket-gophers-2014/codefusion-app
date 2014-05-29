@@ -117,26 +117,22 @@
 
   <script type="text/x-handlebars" id="file">
     <article class="code-view text-area file">
-      <table class="code-table">
-        <tbody>
-          <tr class="code-row">
-            {{partial "code-view"}}
-          </tr>
-          <tr class="note-row">
-            {{ partial "note-view"}}
-          </tr>
-        </tbody>
-      </table>
+      <div class="code-wrapper code-row">
+        {{partial "code-view"}}
+      </div>
+      <hr>
+      <div class="code-wrapper note-row">
+        {{ partial "note-view"}}
+      </div>
     </article>
   </script>
 
   <script type="text/x-handlebars" data-template-name="_code-view">
-    <td class="code">{{prettifyCode model.fileContent}}
-    </td>
+    {{prettifyCode model.fileContent}}
   </script>
 
   <script type="text/x-handlebars" data-template-name="_note-view">
-    <td class="code"><pre class="prettyprint"><textarea id="note-area" class="notes" placeholder="Type your notes here..."></textarea></pre></td>
+    <pre class="prettyprint"><textarea id="note-area" class="notes" placeholder="Type your notes here..."></textarea></pre>
   </script>
 
   <script type="text/x-handlebars" data-template-name="_download">
