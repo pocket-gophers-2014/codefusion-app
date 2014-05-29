@@ -12,7 +12,7 @@ App.ClassroomFiles = Ember.Object.extend({
   },
   _checkAndSetCurrentlyModifiedFile: function(fileName, newFileContent) {
     if (this.files[fileName] != newFileContent) {
-      App.Classroom.set('currentlyModifiedFile', newFileContent)
+      App.Classroom.set('currentlyModifiedFile', fileName)
     }
   },
   _resetAllCurrentFileContent: function(fileName, newFileContent) {
