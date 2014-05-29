@@ -10,5 +10,12 @@ App.View = {
     setTimeout(function() {
      $('li').first().click()
     }, 2)
+  },
+  updateNotePane: function(currentNote) {
+    if (currentNote) {
+      $('#note-area').val(currentNote);
+    } else {
+      $('#note-area').val("")
+    }
   }
 }
