@@ -20,6 +20,11 @@ App.View = {
      $('ul').first().on('click',App.View.toggleFile)
     }, 2)
   },
+  toggleNoteView: function() {
+    $('.note-row').toggle();
+    $('.code-view hr').toggle();
+    $('.code-row').toggleClass('unsplit')
+  },
   updateNotePane: function(currentNote) {
     if (currentNote) {
       $('#note-area').val(currentNote);

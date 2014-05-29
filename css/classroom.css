@@ -1,7 +1,3 @@
-.classroom-text < * {
-  text-align: center;
-}
-
 .text-area {
   width: 100%;
   height: 100%;
@@ -9,17 +5,17 @@
   vertical-align: top;
 }
 
-.code-table {
+.code-view {
   width: 100%;
   height: 100%;
   box-shadow:inset 0 0 1px 2px #3c3d39, 0 0 15px rgba(0,0,0,0.5);
   background-color: #272822;
-/*  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -o-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -khtml-border-radius: 10px;
-  border-radius: 10px;*/
+}
+
+.code-wrapper {
+  overflow: auto;
+  height: 50%;
+  color: #FFF;
 }
 
 pre.prettyprint {
@@ -40,8 +36,16 @@ pre.prettyprint {
   width: 95%;
 }
 
-.code-table tr:last-child {
-  border-top: 1px solid white;
+.code-view hr:hover {
+  cursor: ns-resize;
+}
+
+.code-row {
+  border-bottom: 2px solid white;
+}
+
+.code-row.unsplit {
+  height: 100%;
 }
 
 pre ol { counter-reset: item; padding-left: 10px; }
