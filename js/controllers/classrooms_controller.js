@@ -10,7 +10,7 @@ App.ClassroomRoute = Ember.Route.extend({
       App.View.toggleFolder(object,event)
     },
     download: function(){
-      saveAs(App.Classroom.asZipDirectory().generate({type:'blob'}), App.Classroom.classroomCode)
+      saveAs(App.ZipManager.getZip(App.Classroom.content))
     }
   }
 });
