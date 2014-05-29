@@ -75,10 +75,16 @@
       <article class="folder-nav-wrapper">
         <div id="folder-nav">
           {{partial 'download'}}
+
+          <div id="active-file">
+            <p>Changes currently being made at..</p>
           {{fileLinkMod model.currentlyModifiedFile}}
+          </div>
+
           {{#with model.folders}}
             {{partial "_subFolders" }}
           {{/with}}
+
         </div>
       </article>
       <article class="code-view-wrapper">
