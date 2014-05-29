@@ -51,7 +51,7 @@
 
     <footer>
       <article>
-        <p id="home-link"><strong>{{#link-to 'index' }}codefusion.io{{/link-to}}</strong></p><p id="blurb">&nbsp;is made for the people, by the people</p>
+        <p id="home-link"><strong>{{#link-to 'index' }}codefusion{{/link-to}}</strong></p><p id="blurb">&nbsp;is the feeling before understanding</p>
         <a href="https://github.com/pocket-gophers-2014/codefusion-app" target="_blank"><img src='css/img/GitHub-Mark-32px.png'></a>
       </article>
     </footer>
@@ -59,13 +59,13 @@
 
   <script type="text/x-handlebars" id='index'>
     <header class="main">
-      <h1>{{#link-to 'index' }}codefusion.io{{/link-to}}</h1>
+      <h1>{{#link-to 'index' }}<img id="logo" src="css/img/codefusion.png"></img>{{/link-to}}</h1>
     </header>
     <section>
       <article id="searchbar">
         <form id="search" {{ action "redirectToClassroom" classroomCode on="submit" }}>
-         {{input type="text" value=classroomCode class="searchForm" placeholder="Search by classroom code.. "}}
-          <input type='image' value="Search" src="css/img/searchbar.png" id="searchimage"/>
+         {{input type="text" value=classroomCode class="searchForm" placeholder="input classroom code_"}}
+          <input type='image' value="Search" src="css/img/mag.png" id="searchimage"/>
         </form>
       </article>
     </section>
@@ -75,18 +75,19 @@
 
     <section class="classroom-wrapper">
       <article class="folder-nav-wrapper">
-        <div id="folder-nav">
+        <div id="folder-nav" class="sticky-holder">
           {{partial 'download'}}
           <button onclick="App.View.toggleNoteView()">Notes</button>
           <div id="active-file">
-            <p>Last change made at... </p>
-          {{fileLinkMod model.currentlyModifiedFile}}
+            <p class="notif">
+              Latest change:<br>
+              {{fileLinkMod model.currentlyModifiedFile}}
+            </p>
           </div>
 
           {{#with model.folders}}
             {{partial "_subFolders" }}
           {{/with}}
-
         </div>
       </article>
       <article class="code-view-wrapper">
@@ -135,6 +136,6 @@
   </script>
 
   <script type="text/x-handlebars" data-template-name="_download">
-    <button id="files-download" {{action 'download'}}>Download as Zip</button>
+    <button id="files-download" {{action 'download'}}>download .zip</button>
   </script>
 </body>
