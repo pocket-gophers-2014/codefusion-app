@@ -1,7 +1,9 @@
 App.PrettifyView = Ember.View.extend({
   refresh: function() {
-    $('pre').removeClass('prettyprinted')
-    $('pre#code').text(App.CurrentFile.fileContent)
-    $('pre').each(function() { prettyPrint() })
+    setTimeout(function() {
+      $('pre').removeClass('prettyprinted')
+      $('pre#code').text(App.CurrentFile.fileContent)
+      $('pre').each(function() { prettyPrint() })
+    }, 2)
   }
 }).create()

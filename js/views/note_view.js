@@ -3,7 +3,6 @@ App.NoteView = Ember.View.extend({
     var currentNote = App.NoteHolder.notes[App.CurrentFile.fileName]
     App.NoteView.updateNoteView(currentNote)
   },
-
   updateNoteView: function(currentNote) {
     if (currentNote) {
       $('#note-area').val(currentNote);
@@ -11,11 +10,9 @@ App.NoteView = Ember.View.extend({
       $('#note-area').val("")
     }
   },
-
   listenForKeystroke: function() {
     document.onkeyup = this.saveNote.bind(this)
   },
-
   saveNote: function() {
     var noteContent = $('#note-area').val()
     App.NoteHolder.notes[App.CurrentFile.fileName] = noteContent

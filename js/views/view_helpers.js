@@ -5,5 +5,10 @@ App.View = {
     if (event != undefined) {
       $(event.target).toggleClass('closed')
     }
+  },
+  initializeFolderLayout: function() {
+    setTimeout(function() {
+     $('li').first().click()
+    }, 2)
   }
 }

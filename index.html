@@ -19,7 +19,6 @@
   <!-- <script src="js/libs/ember.min.js"></script> -->
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ember.js/1.5.1/ember.min.js"></script> -->
   <script src="tests/runner.js"></script>
-
   <script src='js/libs/ember-1.5.1.js'></script>
   <script src='js/libs/prettify.small.js'></script>
   <script src="js/libs/jszip.js"></script>
@@ -38,8 +37,8 @@
   <script src="js/views/note_view.js"></script>
   <script src="js/views/handlebar_helpers.js"></script>
   <script src="js/views/view_helpers.js"></script>
-  <script src="js/views/master_view_controller.js"></script>
   <script src="js/views/prettify_view.js"></script>
+
 </head>
 <body>
 
@@ -76,10 +75,16 @@
       <article class="folder-nav-wrapper">
         <div id="folder-nav">
           {{partial 'download'}}
+
+          <div id="active-file">
+            <p>Changes currently being made at..</p>
           {{fileLinkMod model.currentlyModifiedFile}}
+          </div>
+
           {{#with model.folders}}
             {{partial "_subFolders" }}
           {{/with}}
+
         </div>
       </article>
       <article class="code-view-wrapper">
