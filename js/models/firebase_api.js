@@ -3,12 +3,14 @@ App.FirebaseAPI = {
   initClassroomChangeListener: function(classroom_code) {
     new Firebase(this.dataBaseLocation)
     .once("value", function(data) {
-      var numMatches=0
+      var roomMatch = false
       data.forEach(function(classroom) {
-        numMatches=numMatches+App.FirebaseAPI.checkRoomMatch(classroom, classroom_code)
+        if ( App.FirebaseAPI.checkRoomMatch(classroom, classroom_code)) {
+          roomMatch = true
+        }
       })
-      if (numMatches<1){
-       document.location.href = '/';
+      if (!roomMatch ){
+       document.location.href = '/'; // better way?
       }
     })
   },
@@ -16,21 +18,18 @@ App.FirebaseAPI = {
     if (classroom.val().classroom_code === params) {
       var fireBaseUUID = classroom.hc.path.m[1]
       App.FirebaseAPI.setCurrentClassroomListener(fireBaseUUID)
-      return 1
-    }
-    else {
-      return 0
+      return true
     }
   },
   setCurrentClassroomListener: function(currentClassroomUUID) {
     var response =  new Firebase(this.dataBaseLocation + currentClassroomUUID)
     response.on("value", function(data) {
       console.log("response recieved")
-      fileContents = data.val().content
+      var fileContents = data.val().content
 
       App.Classroom.set('content', fileContents)
       App.ClassroomFolders.checkForFileAdditionsOrRemovals(fileContents)
-      App.CurrentFile.parseNewContent(fileContents)
+      App.CurrentFile.parseForNewContent(fileContents)
     });
   }
 };
