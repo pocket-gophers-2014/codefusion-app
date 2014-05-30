@@ -125,3 +125,9 @@
   position:relative;
   top:1px;
 }
+
+.hide-button {
+  border:none;
+  display:inline-block;
+  width: 100%;
+}
