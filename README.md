@@ -12,5 +12,6 @@ Drew West https://github.com/drewfwest
 
 James Hulley https://github.com/jhulley
 
-codefusion.io
+http://codefusion.io
+/n
 enter "demo" on the homepage to see how it works!
