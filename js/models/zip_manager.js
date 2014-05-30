@@ -45,9 +45,9 @@ App.ZipManager = Ember.Object.extend({
     return pathName.slice(pathName.lastIndexOf('/') + 1, 500)
   },
   nameTheZipFile: function(rootDirectory){
-    return (App.Classroom.classroomCode + "_" + rootDirectory.folder_name)
+    return (App.Classroom.classroomCode + "_" + rootDirectory.folder_name + ".zip")
   },
   nameTheNotesFile: function(){
-    App.Classroom.classroomCode + "_notes.txt"
+    return App.Classroom.classroomCode + "_notes.txt"
   }
 }).create()

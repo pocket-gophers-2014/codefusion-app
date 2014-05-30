@@ -14,9 +14,9 @@ App.NoteHolder = Ember.Object.extend({
   generateCumulativeNotes: function(){
     var cumulativeNoteString = ""
     var notes = App.NoteHolder.notes
-    for (var note in notes){
-      if (note !== null){
-        cumulativeNoteString += ("--------" + note + "\n" + notes[note] + '\n\n')
+    for (var associatedFilePath in notes){
+      if (notes[associatedFilePath] !== null){
+        cumulativeNoteString += ("--------" + associatedFilePath.replace("+", "/") + "\n" + notes[associatedFilePath] + '\n\n')
       }
     }
     return cumulativeNoteString
