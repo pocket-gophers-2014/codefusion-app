@@ -4,6 +4,8 @@ codefusion is a tool that allows programmers to broadcast local files and folder
 
 We use a Ruby Gem to track changes on the teacher's machine, send them to Firebase, and display the files and directories on our Ember.js front-end.
 
+![Imgur](http://i.imgur.com/Q6DDF94.jpg)
+
 Aaron Wertman https://github.com/awertman
 
 Ben Myhre https://github.com/bemyhre
