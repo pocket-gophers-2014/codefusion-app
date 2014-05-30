@@ -5,9 +5,13 @@ We use a Ruby Gem to track changes on the teacher's machine, send them to Fireba
 Aaron Wertman, Ben Myhre, David Stavis, Drew West, and James Hulley
 
 https://github.com/awertman
+
 https://github.com/bemyhre
+
 https://github.com/dstavis
+
 https://github.com/drewfwest
+
 https://github.com/jhulley
 
 codefusion.io
