@@ -21,6 +21,7 @@
 pre.prettyprint {
   height: 100%;
   overflow: auto;
+  margin: 0 auto;
 }
 
 .notes {
@@ -32,7 +33,7 @@ pre.prettyprint {
 }
 
 #note-area {
-  height: 95%;
+  height: 90%;
   width: 95%;
 }
 
